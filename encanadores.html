@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços 4.0 - Encanadores</title>
+    <link rel="stylesheet" href="style_laranja_preto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos específicos para a página de profissionais */
+        .professionals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2em; /* Aumenta o espaçamento entre os cards para melhor distinção (Gestalt: Proximidade) */
+            padding: 2em 0;
+            justify-content: center;
+        }
+        .professional-card {
+            background-color: #444; /* Cor de fundo escura */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 1em;
+            transition: transform 0.2s ease-in-out;
+            color: #f8f9fa; /* Cor do texto claro para contraste (Gestalt: Contraste) */
+        }
+        .professional-card:hover {
+            transform: translateY(-5px);
+            background-color: #555; /* Leve escurecimento no hover */
+        }
+        .professional-card img {
+            width: 100%;
+            height: 200px; /* Altura fixa para as imagens */
+            object-fit: cover; /* Garante que a imagem preencha o espaço sem distorção */
+            border-bottom: 3px solid #ffa500; /* Linha laranja para separar a imagem do texto */
+            margin-bottom: 1em;
+        }
+        .professional-card h4 {
+            color: #ffa500; /* Cor laranja para o nome do profissional */
+            margin-bottom: 0.5em;
+            font-size: 1.5em;
+        }
+        .professional-card p {
+            color: #ccc; /* Cor cinza claro para a descrição */
+            font-size: 0.9em;
+            margin: 0 1em 1em;
+        }
+        .professional-card .rating {
+            color: #ffcc00; /* Amarelo para as estrelas */
+            margin-bottom: 1em;
+        }
+        .professional-card .button {
+            width: calc(100% - 2em); /* Ocupa quase toda a largura do card, com padding */
+            margin: 0 1em;
+            padding: 10px 15px;
+            font-size: 1em;
+        }
+
+        /* Título da seção principal */
+        .content-section h3 {
+            text-align: center;
+            color: #ffa500;
+            margin-top: 2em;
+            margin-bottom: 1.5em;
+            font-size: 2.2em;
+        }
+
+        /* Estilo para a mensagem de nenhum profissional encontrado */
+        .no-professionals-message {
+            text-align: center;
+            color: #ccc;
+            font-size: 1.2em;
+            margin-top: 3em;
+            margin-bottom: 5em;
+            padding: 20px;
+            border: 1px dashed #ffa500;
+            border-radius: 8px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <a href="index.html" class="site-logo">
+                    <img src="imagens/logo4.0.png" alt="Logo Serviços 4.0">
+                    <span></span>
+                </a>
+                <div class="header-action-group">
+                    <p>Precisa agendar um profissional?</p>
+                    <div class="header-buttons">
+                        <div class="botoes-lado-a-lado">
+                            <div class="cadastro-rapido">
+                                <button id="botao-cadastro-rapido" class="button primary-button small-button">Cadastre-se (Cliente)</button>
+                                <div id="formulario-cadastro">
+                                    <h3>Cadastre-se Rapidamente</h3>
+                                    <input type="text" placeholder="Nome">
+                                    <input type="email" placeholder="E-mail">
+                                    <input type="password" placeholder="Senha">
+                                    <button class="primary-button">Cadastrar</button>
+                                    <p>Ou cadastre-se com:</p>
+                                    <button class="secondary-button">Google</button>
+                                    <button class="secondary-button">Celular</button>
+                                </div>
+                            </div>
+                            <a href="cadastro.html" class="button secondary-button small-button">Cadastre-se como Prestador</a>
+                        </div>
+                        <a href="#" class="button secondary-button small-button">Entrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="pintores.html">Pintores</a></li>
+                    <li><a href="pedreiros.html">Pedreiros</a></li>
+                    <li><a href="eletricistas.html">Eletricistas</a></li>
+                    <li><a href="encanadores.html" class="active">Encanadores</a></li>
+                    <li><a href="servicos_categorias.html">Outros Serviços</a></li>
+                    <li><a href="sobre_nos.html">Sobre Nós</a></li>
+                    <li><a href="index.html#whatsapp">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container content-section">
+            <h3>Encanadores Disponíveis</h3>
+            <div class="professionals-grid">
+                <div class="professional-card" data-id="301" data-nome="Ricardo Santos">
+                    <img src="imagens/encanador_2.jpg" alt="Foto de Ricardo Santos">
+                    <h4>Ricardo Santos</h4>
+                    <p>Especialista em reparos hidráulicos, desentupimentos e instalação de tubulações.</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (5.0)
+                    </div>
+                    <a href="detalhes_agendamento.html?profissional=Ricardo Santos&servico=Encanador" class="button primary-button agendar-button">Agendar</a>
+                </div>
+
+                <div class="professional-card" data-id="302" data-nome="Sofia Pereira">
+                    <img src="imagens/encanadora_bia.jpg" alt="Foto de Sofia Pereira">
+                    <h4>Sofia Pereira</h4>
+                    <p>Vazamentos, instalação de torneiras e chuveiros. Soluções rápidas e eficientes.</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i> (3.5)
+                    </div>
+                    <a href="detalhes_agendamento.html?profissional=Sofia Pereira&servico=Encanador" class="button primary-button agendar-button">Agendar</a>
+                </div>
+
+                <div class="professional-card" data-id="303" data-nome="Marcelo Vieira">
+                    <img src="imagens/encandor_1.jpg" alt="Foto de Marcelo Vieira">
+                    <h4>Marcelo Vieira</h4>
+                    <p>Manutenção preventiva, detecção de vazamentos e projetos hidráulicos.</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> (4.0)
+                    </div>
+                    <a href="detalhes_agendamento.html?profissional=Marcelo Vieira&servico=Encanador" class="button primary-button agendar-button">Agendar</a>
+                </div>
+
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Serviços 4.0</p>
+            <div class="footer-links">
+                <a href="feedback.html">Deixe sua Avaliação</a> |
+                <a href="sobre_nos.html">Sobre Nós</a> |
+                <a href="termos_de_uso.html">Termos de Uso</a>
+            </div>
+            <div>Dúvidas ou gostaria de ser um apoiador?</div>
+            <div style="text-align: center; padding: 20px;" id="whatsapp">
+                <a href="https://wa.me/16994555864" target="_blank" class="whatsapp-button">
+                    <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> Fale Conosco no WhatsApp
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Script para o botão de cadastro rápido no cabeçalho
+            const botaoCadastroRapido = document.getElementById('botao-cadastro-rapido');
+            const formularioCadastro = document.getElementById('formulario-cadastro');
+
+            if (botaoCadastroRapido && formularioCadastro) {
+                botaoCadastroRapido.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    formularioCadastro.style.display = formularioCadastro.style.display === 'none' ? 'flex' : 'none';
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!formularioCadastro.contains(event.target) && event.target !== botaoCadastroRapido) {
+                        formularioCadastro.style.display = 'none';
+                    }
+                });
+            }
+
+            // Script para ativar o link do menu de navegação
+            const currentPath = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Script para passar os dados do profissional para a página de agendamento
+            const agendarButtons = document.querySelectorAll('.agendar-button');
+            agendarButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault(); // Impede o comportamento padrão do link
+
+                    // Pega os dados do card do profissional pai
+                    const professionalCard = this.closest('.professional-card');
+                    const professionalName = professionalCard.querySelector('h4').innerText; // Pega o nome do h4
+                    // Você pode adicionar um dataset-id ou dataset-servico no HTML se quiser passar mais infos
+
+                    // Cria a URL com os parâmetros de consulta
+                    const url = `detalhes_agendamento.html?profissional=${encodeURIComponent(professionalName)}&servico=Encanador`;
+                    window.location.href = url;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

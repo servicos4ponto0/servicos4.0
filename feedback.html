@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços 4.0 - Deixe seu Feedback</title>
+    <link rel="stylesheet" href="style_laranja_preto.css">
+    <link rel="stylesheet" href="feedback.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <a href="index.html" class="site-logo">
+                    <img src="imagens/logo4.0.png" alt="Logo Serviços 4.0">
+                    <span></span>
+                </a>
+                <div class="header-action-group">
+                    <p>Precisa agendar um profissional?</p>
+                    <div class="header-buttons">
+                        <div class="botoes-lado-a-lado">
+                            <div class="cadastro-rapido">
+                                <button id="botao-cadastro-rapido" class="button primary-button small-button">Cadastre-se (Cliente)</button>
+                                <div id="formulario-cadastro">
+                                    <h3>Cadastre-se Rapidamente</h3>
+                                    <input type="text" placeholder="Nome">
+                                    <input type="email" placeholder="E-mail">
+                                    <input type="password" placeholder="Senha">
+                                    <button class="primary-button">Cadastrar</button>
+                                    <p>Ou cadastre-se com:</p>
+                                    <button class="secondary-button">Google</button>
+                                    <button class="secondary-button">Celular</button>
+                                </div>
+                            </div>
+                            <a href="cadastro.html" class="button secondary-button small-button">Cadastre-se como Prestador</a>
+                        </div>
+                        <a href="#" class="button secondary-button small-button">Entrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="pintores.html">Pintores</a></li>
+                    <li><a href="pedreiros.html">Pedreiros</a></li>
+                    <li><a href="eletricistas.html">Eletricistas</a></li>
+                    <li><a href="encanadores.html">Encanadores</a></li>
+                    <li><a href="servicos_categorias.html">Outros Serviços</a></li>
+                    <li><a href="sobre_nos.html">Sobre Nós</a></li>
+                    <li><a href="index.html#whatsapp">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="feedback-section">
+                <h2>Deixe seu Feedback</h2>
+                <p>Sua opinião é muito importante para nós e para a comunidade!</p>
+                <form id="feedback-form">
+                    <div class="form-group">
+                        <label for="name">Seu Nome (Opcional):</label>
+                        <input type="text" id="name" name="name" placeholder="Seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Seu E-mail (Opcional):</label>
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Avaliação Geral:</label>
+                        <div class="rating-group">
+                            <input type="radio" id="rating-1" name="rating" value="1" required>
+                            <label for="rating-1">1 Estrela</label>
+
+                            <input type="radio" id="rating-2" name="rating" value="2">
+                            <label for="rating-2">2 Estrelas</label>
+
+                            <input type="radio" id="rating-3" name="rating" value="3">
+                            <label for="rating-3">3 Estrelas</label>
+
+                            <input type="radio" id="rating-4" name="rating" value="4">
+                            <label for="rating-4">4 Estrelas</label>
+
+                            <input type="radio" id="rating-5" name="rating" value="5">
+                            <label for="rating-5">5 Estrelas</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-used">Qual serviço você utilizou?</label>
+                        <input type="text" id="service-used" name="service-used" placeholder="Ex: Eletricista, Encanador, etc." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Seus Comentários (Opcional):</label>
+                        <textarea id="comments" name="comments" rows="5" placeholder="Descreva sua experiência..."></textarea>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="button primary-button">Enviar Feedback</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Serviços 4.0</p>
+            <div class="footer-links">
+                <a href="feedback.html">Deixe sua Avaliação</a> |
+                <a href="sobre_nos.html">Sobre Nós</a> |
+                <a href="termos_de_uso.html">Termos de Uso</a>
+            </div>
+            <div>Dúvidas ou gostaria de ser um apoiador?</div>
+            <div style="text-align: center; padding: 20px;" id="whatsapp">
+                <a href="https://wa.me/16994555864" target="_blank" class="whatsapp-button">
+                    <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> Fale Conosco no WhatsApp
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lógica do formulário de feedback
+            const feedbackForm = document.getElementById('feedback-form');
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Impede o envio padrão do formulário
+
+                    // Coleta dos dados do formulário (apenas para demonstração)
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const rating = document.querySelector('input[name="rating"]:checked') ? document.querySelector('input[name="rating"]:checked').value : 'Nenhuma avaliação';
+                    const serviceUsed = document.getElementById('service-used').value;
+                    const comments = document.getElementById('comments').value;
+
+                    console.log('Feedback Recebido:');
+                    console.log('Nome:', name);
+                    console.log('E-mail:', email);
+                    console.log('Avaliação:', rating + ' estrelas');
+                    console.log('Serviço Utilizado:', serviceUsed);
+                    console.log('Comentários:', comments);
+
+                    alert('Obrigado pelo seu feedback! Ele foi enviado com sucesso.');
+                    // Aqui você enviaria os dados do formulário para o backend (Node.js/Express!)
+                    this.reset(); // Limpa o formulário após o envio (simulado)
+                });
+            }
+
+            // Lógica do formulário de cadastro rápido no cabeçalho (do index.html)
+            const botaoCadastroRapido = document.getElementById('botao-cadastro-rapido');
+            const formularioCadastroRapido = document.getElementById('formulario-cadastro');
+
+            if (botaoCadastroRapido && formularioCadastroRapido) {
+                botaoCadastroRapido.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    formularioCadastroRapido.style.display = formularioCadastroRapido.style.display === 'none' ? 'flex' : 'none';
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!formularioCadastroRapido.contains(event.target) && event.target !== botaoCadastroRapido) {
+                        formularioCadastroRapido.style.display = 'none';
+                    }
+                });
+            }
+
+            // Lógica para ativar o link do menu de navegação (do index.html)
+            const currentPath = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active'); // Remove a classe active de todos os links
+
+                const linkHref = link.getAttribute('href');
+                const linkFileName = linkHref.split('/').pop();
+
+                if (linkFileName === currentPath) {
+                    link.classList.add('active');
+                }
+                if ((currentPath === '' || currentPath === 'index.html') && (linkFileName === 'index.html' || (linkHref.includes('#') && window.location.hash === linkHref.split('#')[1]))) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

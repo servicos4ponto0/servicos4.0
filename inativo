@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços 4.0 - Nossos Serviços</title>
+    <link rel="stylesheet" href="style_laranja_preto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        header .container h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Serviços 4.0</h1>
+        </div>
+    </header>
+    <section class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-slide">
+                <img src="imagens/banner1.png" alt="Encontre os melhores profissionais">
+            </div>
+            <div class="carousel-slide">
+                <img src="imagens/banner2.png" alt="Serviços de qualidade perto de você">
+            </div>
+            <div class="carousel-slide">
+                <img src="imagens/banner3.png" alt="Orçamentos rápidos e transparentes">
+            </div>
+        </div>
+        <button class="carousel-control prev">&#10094;</button>
+        <button class="carousel-control next">&#10095;</button>
+    </section>
+    <nav>
+        <div class="container">
+            <a href="#encanadores">Encanadores</a>
+            <a href="#eletricistas">Eletricistas</a>
+            <a href="#pintores">Pintores</a>
+            <a href="#pedreiros">Pedreiros</a>
+            <a href="index.html" class="voltar-button">Voltar</a>
+        </div>
+    </nav>
+    <section class="section-services container">
+        <div class="service-card" id="encanadores">
+            <img src="encanador.png" alt="Encanador">
+            <h2>Encanadores</h2>
+            <p>Profissionais qualificados para resolver seus problemas de encanamento.</p>
+            <a href="#" class="button primary-button">Contratar</a>
+        </div>
+        <div class="service-card" id="eletricistas">
+            <img src="eletrecista.png" alt="Eletricista">
+            <h2>Eletricistas</h2>
+            <p>Instalação e manutenção elétrica com segurança e qualidade.</p>
+            <a href="#" class="button primary-button">Contratar</a>
+        </div>
+        <div class="service-card" id="pintores">
+            <img src="pintor.png" alt="Pintor">
+            <h2>Pintores</h2>
+            <p>Pintura residencial e comercial com acabamento impecável.</p>
+            <a href="#" class="button primary-button">Contratar</a>
+        </div>
+        <div class="service-card" id="pedreiros">
+            <img src="pedreiro.png" alt="Pedreiro">
+            <h2>Pedreiros</h2>
+            <p>Construção e reforma com profissionais experientes.</p>
+            <a href="#" class="button primary-button">Contratar</a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Serviços 4.0</p>
+            <div>Duvidas ou Gostaria de ser um apoiador?
+            </div>
+            <div style="text-align: center; padding: 20px;" id="whatsapp">
+                <a href="https://wa.me/16994555864" target="_blank" class="whatsapp-button">
+                    <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> Fale Conosco no WhatsApp
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

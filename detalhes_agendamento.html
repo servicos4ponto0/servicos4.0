@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços 4.0 - Agendamento</title>
+    <link rel="stylesheet" href="style_laranja_preto.css">
+    <link rel="stylesheet" href="detalhes_agendamento.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <a href="index.html" class="site-logo">
+                    <img src="imagens/logo4.0.png" alt="Logo Serviços 4.0">
+                    <span></span>
+                </a>
+                <div class="header-action-group">
+                    <p>Precisa agendar um profissional?</p>
+                    <div class="header-buttons">
+                        <div class="botoes-lado-a-lado">
+                            <div class="cadastro-rapido">
+                                <button id="botao-cadastro-rapido" class="button primary-button small-button">Cadastre-se (Cliente)</button>
+                                <div id="formulario-cadastro">
+                                    <h3>Cadastre-se Rapidamente</h3>
+                                    <input type="text" placeholder="Nome">
+                                    <input type="email" placeholder="E-mail">
+                                    <input type="password" placeholder="Senha">
+                                    <button class="primary-button">Cadastrar</button>
+                                    <p>Ou cadastre-se com:</p>
+                                    <button class="secondary-button">Google</button>
+                                    <button class="secondary-button">Celular</button>
+                                </div>
+                            </div>
+                            <a href="cadastro.html" class="button secondary-button small-button">Cadastre-se como Prestador</a>
+                        </div>
+                        <a href="#" class="button secondary-button small-button">Entrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="pintores.html">Pintores</a></li>
+                    <li><a href="pedreiros.html">Pedreiros</a></li>
+                    <li><a href="eletricistas.html">Eletricistas</a></li>
+                    <li><a href="encanadores.html">Encanadores</a></li>
+                    <li><a href="servicos_categorias.html">Outros Serviços</a></li>
+                    <li><a href="sobre_nos.html">Sobre Nós</a></li>
+                    <li><a href="index.html#whatsapp">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="professional-details-section">
+                <h2>Agendar Serviço com <span id="professional-name-display">Profissional</span></h2>
+                <p>Preencha os detalhes abaixo para solicitar o serviço.</p>
+            </section>
+
+            <section class="appointment-form-section">
+                <h2>Formulário de Agendamento</h2>
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label for="client-name">Seu Nome Completo:</label>
+                        <input type="text" id="client-name" name="client-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-email">Seu E-mail:</label>
+                        <input type="email" id="client-email" name="client-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-phone">Seu Telefone (com DDD):</label>
+                        <input type="tel" id="client-phone" name="client-phone" pattern="[0-9]{2}[0-9]{4,5}[0-9]{4}" placeholder="Ex: 11987654321" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-date">Data Preferida:</label>
+                        <input type="date" id="service-date" name="service-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-time">Hora Preferida:</label>
+                        <input type="time" id="service-time" name="service-time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-description">Descreva o Serviço Necessário:</label>
+                        <textarea id="service-description" name="service-description" rows="5" placeholder="Detalhes do serviço, problemas específicos, etc." required></textarea>
+                    </div>
+                    <button type="submit">Confirmar Agendamento</button>
+                </form>
+
+                <div id="confirmation-message" class="confirmation-message">
+                    <p>Seu agendamento foi solicitado com sucesso!</p>
+                    <p>O profissional entrará em contato em breve para confirmar os detalhes.</p>
+                    <a href="index.html" class="back-to-home">Voltar para a Página Inicial</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+   <footer>
+        <div class="container">
+            <p>&copy; 2025 Serviços 4.0</p>
+            <div class="footer-links">
+                <a href="feedback.html">Deixe sua Avaliação</a> |
+                <a href="sobre_nos.html">Sobre Nós</a> |
+                <a href="termos_de_uso.html">Termos de Uso</a>
+            </div>
+            <div>Dúvidas ou gostaria de ser um apoiador?</div>
+            <div style="text-align: center; padding: 20px;" id="whatsapp">
+                <a href="https://wa.me/16994555864" target="_blank" class="whatsapp-button">
+                    <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> Fale Conosco no WhatsApp
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lógica para obter o nome do profissional da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const professionalId = urlParams.get('id');
+            const professionalName = urlParams.get('nome');
+
+            if (professionalName) {
+                document.getElementById('professional-name-display').textContent = professionalName;
+            }
+
+            // Lógica do formulário de agendamento
+            const appointmentForm = document.getElementById('appointment-form');
+            const confirmationMessage = document.getElementById('confirmation-message');
+
+            if (appointmentForm) {
+                appointmentForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    // Captura dos dados do formulário
+                    const clientName = document.getElementById('client-name').value;
+                    const clientEmail = document.getElementById('client-email').value;
+                    const clientPhone = document.getElementById('client-phone').value;
+                    const serviceDate = document.getElementById('service-date').value;
+                    const serviceTime = document.getElementById('service-time').value;
+                    const serviceDescription = document.getElementById('service-description').value;
+
+                    // E o nome do profissional (já capturado acima)
+                    const professional = professionalName || "Profissional Não Especificado";
+
+                    console.log("Dados do Agendamento:");
+                    console.log(`Profissional: ${professional}`);
+                    console.log(`Nome do Cliente: ${clientName}`);
+                    console.log(`E-mail: ${clientEmail}`);
+                    console.log(`Telefone: ${clientPhone}`);
+                    console.log(`Data: ${serviceDate}`);
+                    console.log(`Hora: ${serviceTime}`);
+                    console.log(`Descrição: ${serviceDescription}`);
+
+                    // Em um cenário real, você enviaria esses dados para um servidor (backend)
+                    // Usando fetch() ou XMLHttpRequest.
+
+                    // Por enquanto, apenas esconde o formulário e mostra a mensagem de confirmação
+                    appointmentForm.style.display = 'none';
+                    confirmationMessage.style.display = 'block';
+
+                    // Opcional: Redirecionar após alguns segundos ou dar a opção de voltar
+                    // setTimeout(() => {
+                    //     window.location.href = 'index.html';
+                    // }, 5000); // Redireciona após 5 segundos
+                });
+            }
+
+            // Lógica do formulário de cadastro rápido no cabeçalho (do index.html)
+            const botaoCadastroRapido = document.getElementById('botao-cadastro-rapido');
+            const formularioCadastroRapido = document.getElementById('formulario-cadastro'); // Renomeado para evitar conflito
+
+            if (botaoCadastroRapido && formularioCadastroRapido) {
+                botaoCadastroRapido.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    formularioCadastroRapido.style.display = formularioCadastroRapido.style.display === 'none' ? 'flex' : 'none';
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!formularioCadastroRapido.contains(event.target) && event.target !== botaoCadastroRapido) {
+                        formularioCadastroRapido.style.display = 'none';
+                    }
+                });
+            }
+
+            // Lógica para ativar o link do menu de navegação (do index.html)
+            const currentPath = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active'); // Remove a classe active de todos os links
+
+                const linkHref = link.getAttribute('href');
+                const linkFileName = linkHref.split('/').pop(); // Extrai o nome do arquivo do href
+
+                // Compara o nome do arquivo da URL atual com o nome do arquivo do link
+                if (linkFileName === currentPath) {
+                    link.classList.add('active');
+                }
+                // Caso especial para a página inicial (index.html) e links de contato com âncora
+                if ((currentPath === '' || currentPath === 'index.html') && (linkFileName === 'index.html' || (linkHref.includes('#') && window.location.hash === linkHref.split('#')[1]))) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

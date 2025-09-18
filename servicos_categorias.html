@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços 4.0 - Outras Categorias de Serviços</title>
+    <link rel="stylesheet" href="style_laranja_preto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos específicos para a página de categorias de serviços */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min-width um pouco menor para mais flexibilidade */
+            gap: 2em; /* Espaçamento entre os cards de categoria */
+            padding: 2em 0;
+            justify-content: center;
+        }
+        .category-card {
+            background-color: #444; /* Cor de fundo escura */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            text-align: center;
+            padding: 1.5em;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+            color: #f8f9fa; /* Cor do texto claro para contraste */
+            display: flex; /* Para centralizar o conteúdo verticalmente */
+            flex-direction: column;
+            justify-content: space-between; /* Espaço entre o título e o botão */
+            align-items: center; /* Centraliza horizontalmente */
+            min-height: 200px; /* Altura mínima para os cards */
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            background-color: #555; /* Leve escurecimento no hover */
+        }
+        .category-card i {
+            font-size: 3.5em; /* Ícone maior */
+            color: #ffa500; /* Cor laranja para os ícones */
+            margin-bottom: 0.8em;
+        }
+        .category-card h4 {
+            color: #ffa500; /* Cor laranja para o nome da categoria */
+            margin-bottom: 1em;
+            font-size: 1.6em;
+        }
+        .category-card p {
+            color: #ccc; /* Cor cinza claro para a descrição */
+            font-size: 0.9em;
+            margin-bottom: 1.5em;
+            flex-grow: 1; /* Permite que a descrição ocupe o espaço disponível */
+        }
+        .category-card .button {
+            width: calc(100% - 2em); /* Ocupa quase toda a largura do card, com padding */
+            padding: 10px 15px;
+            font-size: 1em;
+            margin-top: auto; /* Empurra o botão para a parte inferior */
+        }
+
+        /* Título da seção principal */
+        .content-section h3 {
+            text-align: center;
+            color: #ffa500;
+            margin-top: 2em;
+            margin-bottom: 1.5em;
+            font-size: 2.2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <a href="index.html" class="site-logo">
+                    <img src="imagens/logo4.0.png" alt="Logo Serviços 4.0">
+                    <span></span>
+                </a>
+                <div class="header-action-group">
+                    <p>Precisa agendar um profissional?</p>
+                    <div class="header-buttons">
+                        <div class="botoes-lado-a-lado">
+                            <div class="cadastro-rapido">
+                                <button id="botao-cadastro-rapido" class="button primary-button small-button">Cadastre-se (Cliente)</button>
+                                <div id="formulario-cadastro">
+                                    <h3>Cadastre-se Rapidamente</h3>
+                                    <input type="text" placeholder="Nome">
+                                    <input type="email" placeholder="E-mail">
+                                    <input type="password" placeholder="Senha">
+                                    <button class="primary-button">Cadastrar</button>
+                                    <p>Ou cadastre-se com:</p>
+                                    <button class="secondary-button">Google</button>
+                                    <button class="secondary-button">Celular</button>
+                                </div>
+                            </div>
+                            <a href="cadastro.html" class="button secondary-button small-button">Cadastre-se como Prestador</a>
+                        </div>
+                        <a href="#" class="button secondary-button small-button">Entrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="pintores.html">Pintores</a></li>
+                    <li><a href="pedreiros.html">Pedreiros</a></li>
+                    <li><a href="eletricistas.html">Eletricistas</a></li>
+                    <li><a href="encanadores.html">Encanadores</a></li>
+                    <li><a href="servicos_categorias.html" class="active">Outros Serviços</a></li>
+                    <li><a href="sobre_nos.html">Sobre Nós</a></li>
+                    <li><a href="index.html#whatsapp">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container content-section">
+            <h3>Explore Outras Categorias de Serviços</h3>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <i class="fas fa-hammer"></i>
+                    <h4>Pequenos Reparos</h4>
+                    <p>Serviços como troca de chuveiro, instalação de prateleiras e consertos em geral.</p>
+                    <a href="#" class="button primary-button">Ver Profissionais</a>
+                </div>
+
+                <div class="category-card">
+                    <i class="fas fa-broom"></i>
+                    <h4>Limpeza Residencial</h4>
+                    <p>Profissionais para limpeza pós-obra, diária, semanal ou faxinas pesadas.</p>
+                    <a href="#" class="button primary-button">Ver Profissionais</a>
+                </div>
+
+                <div class="category-card">
+                    <i class="fas fa-tree"></i>
+                    <h4>Jardinagem</h4>
+                    <p>Cuidado com seu jardim, poda, plantio e manutenção de áreas verdes.</p>
+                    <a href="#" class="button primary-button">Ver Profissionais</a>
+                </div>
+
+                <div class="category-card">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h4>Serviços Financeiros</h4>
+                    <p>Consultoria financeira, declaração de imposto de renda e organização de finanças.</p>
+                    <a href="#" class="button primary-button">Ver Profissionais</a>
+                </div>
+
+                <div class="category-card">
+                    <i class="fas fa-paw"></i>
+                    <h4>Pet Sitter</h4>
+                    <p>Cuidadores de animais de estimação para quando você precisar viajar.</p>
+                    <a href="#" class="button primary-button">Ver Profissionais</a>
+                </div>
+
+                <div class="category-card">
+                    <i class="fas fa-desktop"></i>
+                    <h4>Suporte de TI</h4>
+                    <p>Formatação, instalação de softwares, redes e solução de problemas com computadores.</p>
+                    <a href="#" class="button primary-button">Ver Profissionais</a>
+                </div>
+
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Serviços 4.0</p>
+            <div class="footer-links">
+                <a href="feedback.html">Deixe sua Avaliação</a> |
+                <a href="sobre_nos.html">Sobre Nós</a> |
+                <a href="termos_de_uso.html">Termos de Uso</a>
+            </div>
+            <div>Dúvidas ou gostaria de ser um apoiador?</div>
+            <div style="text-align: center; padding: 20px;" id="whatsapp">
+                <a href="https://wa.me/16994555864" target="_blank" class="whatsapp-button">
+                    <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> Fale Conosco no WhatsApp
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Script para o botão de cadastro rápido no cabeçalho
+            const botaoCadastroRapido = document.getElementById('botao-cadastro-rapido');
+            const formularioCadastro = document.getElementById('formulario-cadastro');
+
+            if (botaoCadastroRapido && formularioCadastro) {
+                botaoCadastroRapido.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    formularioCadastro.style.display = formularioCadastro.style.display === 'none' ? 'flex' : 'none';
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!formularioCadastro.contains(event.target) && event.target !== botaoCadastroRapido) {
+                        formularioCadastro.style.display = 'none';
+                    }
+                });
+            }
+
+            // Script para ativar o link do menu de navegação
+            const currentPath = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // ATENÇÃO: Os botões "Ver Profissionais" nestes cards ainda não têm funcionalidade de redirecionamento.
+            // Eles seriam links para páginas específicas de listagem para cada uma dessas categorias,
+            // ou talvez um filtro em uma página geral de busca, dependendo da sua arquitetura futura.
+            // Por enquanto, são apenas links vazios (#).
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços 4.0 - Página Inicial</title>
+    <link rel="stylesheet" href="style_laranja_preto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    /* Cabeçalho */
+    .header-top {
+        display: flex;
+        justify-content: space-between; /* Alinha logo à esquerda e grupo de ações à direita */
+        align-items: center;
+        padding: 5px 20px; /* Adicionado padding lateral para a área visível do header-top */
+        background-color: #222;
+        border-bottom: 1px solid #444;
+        min-height: 80px; /* Usar min-height para flexibilidade, ou height: 80px; se quiser fixo */
+        position: relative; /* Para o formulário de cadastro rápido */
+    }
+
+    .header-top .container {
+        display: flex;
+        justify-content: space-between; /* Distribui logo e grupo de ações */
+        align-items: center;
+        width: 100%;
+        max-width: 1200px; /* Garante que o conteúdo não se espalhe muito */
+        margin: 0 auto; /* Centraliza o container */
+    }
+
+    .site-logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #f8f9fa;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .site-logo img {
+        height: 150px; /* Ajuste o tamanho da logo conforme necessário */
+        margin-right: 10px;
+    }
+
+    .header-action-group {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .header-action-group p {
+        margin: 0;
+        font-size: 0.9em;
+        color: #ccc;
+    }
+
+    .header-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .botoes-lado-a-lado {
+        display: flex;
+        gap: 10px;
+    }
+
+    /* Estilos do formulário de cadastro rápido */
+    .cadastro-rapido {
+        position: relative;
+    }
+
+    #formulario-cadastro {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 100%; /* Posição abaixo do botão */
+        right: 0;
+        background-color: #333;
+        border: 1px solid #555;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        width: 250px; /* Largura do formulário */
+        color: #f8f9fa;
+        text-align: left;
+    }
+
+    #formulario-cadastro h3 {
+        color: #ffa500;
+        margin-top: 0;
+        margin-bottom: 1em;
+        font-size: 1.2em;
+    }
+
+    #formulario-cadastro input {
+        padding: 8px;
+        border: 1px solid #666;
+        border-radius: 4px;
+        background-color: #555;
+        color: #f8f9fa;
+    }
+
+    #formulario-cadastro input::placeholder {
+        color: #bbb;
+    }
+
+    #formulario-cadastro .primary-button,
+    #formulario-cadastro .secondary-button {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    #formulario-cadastro p {
+        text-align: center;
+        margin: 1em 0 0.5em;
+        color: #ccc;
+    }
+
+    /* Navegação Principal */
+    .main-nav {
+        background-color: #222; /* Fundo mais escuro para a navegação */
+        padding: 0.5em 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-nav .container {
+        display: flex;
+        justify-content: center; /* Centraliza os itens do menu */
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .main-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap; /* Permite que os itens quebrem linha */
+        justify-content: center; /* Centraliza os itens quando quebram linha */
+        gap: 1.5em; /* Espaçamento entre os itens do menu */
+    }
+
+    .main-nav ul li a {
+        color: #f8f9fa;
+        text-decoration: none;
+        padding: 0.5em 1em;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-weight: 500;
+        white-space: nowrap; /* Impede quebras de linha dentro dos links */
+    }
+
+    .main-nav ul li a:hover,
+    .main-nav ul li a.active {
+        background-color: #ffa500; /* Laranja no hover e ativo */
+        color: #222; /* Texto escuro no hover e ativo */
+    }
+
+    /* Conteúdo principal (seção de introdução) */
+    .hero-section {
+        text-align: center;
+        padding: 4em 2em;
+        background-color: #333; /* Fundo para a seção principal */
+        border-radius: 8px;
+        margin-top: 2em;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-section h1 {
+        color: #ffa500; /* Título principal em laranja */
+        font-size: 3em;
+        margin-bottom: 0.5em;
+    }
+
+    .hero-section p {
+        color: #ccc;
+        font-size: 1.2em;
+        max-width: 800px;
+        margin: 0 auto 2em;
+    }
+
+    /* Estilos do Carrossel Real */
+    .main-carousel-section {
+        text-align: center;
+        padding: 2em;
+        background-color: #333;
+        border-radius: 8px;
+        margin-top: 2em;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        color: #f8f9fa;
+        position: relative; /* Para posicionar botões de navegação */
+    }
+
+    .main-carousel-section h2 {
+        color: #ffa500;
+        margin-bottom: 1.5em;
+        font-size: 2em;
+    }
+
+    .carousel-container {
+        position: relative;
+        max-width: 100%; /* Largura máxima da área visível do carrossel */
+        margin: 0 auto;
+        overflow: hidden; /* Esconde as partes das imagens que não estão visíveis */
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .carousel-track-container {
+        display: flex; /* Para que os slides fiquem lado a lado */
+        transition: transform 0.5s ease-in-out; /* Transição suave para o deslizamento */
+        width: fit-content; /* Se ajusta ao conteúdo, fundamental para o translateX */
+    }
+
+    .carousel-slide {
+        min-width: 100%; /* Cada slide ocupa 100% da largura do container, mas com max-width 800px */
+        width: 100%; /* Garante que a imagem preencha o slide */
+        box-sizing: border-box; /* Inclui padding/border no cálculo da largura */
+        position: relative;
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        height: 450px; /* Altura fixa para as imagens do carrossel */
+        object-fit: cover; /* Garante que a imagem preencha sem distorção */
+        border-radius: 8px;
+    }
+
+    .slide-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente */
+        color: white;
+        padding: 1em;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .slide-caption h3 {
+        color: #ffa500;
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        font-size: 1.5em;
+    }
+
+    .slide-caption p {
+        margin: 0;
+        font-size: 0.9em;
+    }
+
+    .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 15px;
+        cursor: pointer;
+        font-size: 1.5em;
+        border-radius: 50%; /* Botões circulares */
+        transition: background-color 0.3s ease;
+        z-index: 10; /* Garante que os botões fiquem acima das imagens */
+    }
+
+    .carousel-button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .carousel-button.prev {
+        left: 10px;
+    }
+
+    .carousel-button.next {
+        right: 10px;
+    }
+
+    .carousel-dots {
+        margin-top: 1.5em;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .carousel-dot {
+        height: 12px;
+        width: 12px;
+        background-color: #666;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .carousel-dot.active {
+        background-color: #ffa500;
+        transform: scale(1.2);
+    }
+
+    /* Seção de serviços em destaque */
+    .section-services {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 colunas, responsivas */
+        gap: 2em; /* Espaçamento entre os cards */
+        padding: 2em 0;
+        justify-content: center;
+    }
+
+    .service-card {
+        background-color: #444; /* Fundo do card */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        text-align: center;
+        padding-bottom: 1em;
+        transition: transform 0.2s ease-in-out;
+        color: #f8f9fa;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        background-color: #555; /* Leve escurecimento no hover */
+    }
+
+    .service-card i {
+        font-size: 3.5em; /* Ícone maior */
+        color: #ffa500; /* Laranja para o ícone */
+        padding: 0.8em 0;
+    }
+
+    .service-card h3 {
+        color: #ffa500; /* Título do serviço em laranja */
+        margin-bottom: 0.5em;
+        font-size: 1.6em;
+    }
+
+    .service-card p {
+        color: #ccc;
+        font-size: 0.9em;
+        margin: 0 1em 1em;
+    }
+
+    .service-card .button {
+        width: calc(100% - 2em); /* Ocupa quase toda a largura do card, com padding */
+        margin: 0 1em;
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+
+    /* Seção de feedback / Porque escolher */
+    .why-choose-us {
+        background-color: #333;
+        padding: 3em 2em;
+        border-radius: 8px;
+        margin-top: 2em;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        color: #f8f9fa;
+    }
+
+    .why-choose-us h2 {
+        color: #ffa500;
+        font-size: 2.5em;
+        margin-bottom: 1em;
+    }
+
+    .advantages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2em;
+        margin-top: 2em;
+    }
+
+    .advantage-item {
+        background-color: #444;
+        padding: 1.5em;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .advantage-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .advantage-item i {
+        font-size: 2.5em;
+        color: #ffa500;
+        margin-bottom: 0.5em;
+    }
+
+    .advantage-item h3 {
+        color: #ffa500;
+        font-size: 1.4em;
+        margin-bottom: 0.5em;
+    }
+
+    .advantage-item p {
+        color: #ccc;
+        font-size: 0.9em;
+    }
+
+    /* Rodapé */
+    footer {
+        background-color: #222; /* Fundo do rodapé */
+        color: #f8f9fa;
+        text-align: center;
+        padding: 1.5em 0;
+        margin-top: 2em;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    footer p {
+        margin: 0.5em 0;
+        font-size: 0.9em;
+    }
+
+    footer div {
+        margin-top: 1em;
+        font-size: 1em;
+    }
+
+    .whatsapp-button {
+        display: inline-block;
+        background-color: #25D366; /* Cor do WhatsApp */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px; /* Botão arredondado */
+        text-decoration: none;
+        font-size: 1.1em;
+        margin-top: 1em;
+        transition: background-color 0.3s ease;
+    }
+
+    .whatsapp-button:hover {
+        background-color: #1DA851;
+    }
+
+    /* Estilos globais para botões */
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .primary-button {
+        background-color: #ffa500; /* Laranja */
+        color: #222;
+        border: 2px solid #ffa500;
+    }
+
+    .primary-button:hover {
+        background-color: #e69500; /* Laranja mais escuro */
+        border-color: #e69500;
+    }
+
+    .secondary-button {
+        background-color: transparent;
+        color: #ffa500;
+        border: 2px solid #ffa500;
+    }
+
+    .secondary-button:hover {
+        background-color: #ffa500;
+        color: #222;
+    }
+
+    .small-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    /* Media Queries para Responsividade */
+    @media (max-width: 768px) {
+        .header-top .container {
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 20px;
+        }
+
+        .header-action-group {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .header-action-group p {
+            margin-bottom: 5px;
+        }
+
+        .header-buttons {
+            flex-direction: column;
+            width: 100%;
+            gap: 8px;
+        }
+
+        .botoes-lado-a-lado {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .cadastro-rapido, .header-buttons a {
+            width: 100%; /* Botões e cadastro rápido ocupam largura total */
+        }
+
+        #formulario-cadastro {
+            right: 50%; /* Centraliza o formulário */
+            transform: translateX(50%);
+            width: 90%; /* Aumenta a largura em telas menores */
+        }
+
+        .main-nav .container ul {
+            flex-direction: column; /* Menu de navegação empilhado */
+            gap: 0.5em;
+            text-align: center;
+        }
+
+        .main-nav ul li a {
+            width: 100%;
+            box-sizing: border-box; /* Garante que padding não estoure a largura */
+            display: block; /* Para que o link ocupe toda a largura do li */
+        }
+
+        .hero-section h1 {
+            font-size: 2.2em;
+        }
+
+        .hero-section p {
+            font-size: 1em;
+        }
+
+        /* Responsividade para o carrossel */
+        .carousel-slide img {
+            height: 300px; /* Ajusta a altura para telas menores */
+        }
+        .slide-caption h3 {
+            font-size: 1.2em;
+        }
+        .slide-caption p {
+            font-size: 0.8em;
+        }
+        .carousel-button {
+            padding: 10px;
+            font-size: 1.2em;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header-top {
+            padding: 10px;
+        }
+        .site-logo {
+            font-size: 1.2em;
+        }
+        .site-logo img {
+            height: 40px;
+        }
+        .carousel-slide img {
+            height: 200px; /* Altura ainda menor para telas muito pequenas */
+        }
+        .slide-caption {
+            padding: 0.8em;
+        }
+        .slide-caption h3 {
+            font-size: 1em;
+        }
+        .slide-caption p {
+            display: none; /* Esconde o parágrafo em telas muito pequenas para economizar espaço */
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <a href="index.html" class="site-logo">
+                    <img src="imagens/logo4.0.png" alt="Logo Serviços 4.0">
+                    <span></span>
+                </a>
+                <div class="header-action-group">
+                    <p>Precisa agendar um profissional?</p>
+                    <div class="header-buttons">
+                        <div class="botoes-lado-a-lado">
+                            <div class="cadastro-rapido">
+                                <button id="botao-cadastro-rapido" class="button primary-button small-button">Cadastre-se (Cliente)</button>
+                                <div id="formulario-cadastro">
+                                    <h3>Cadastre-se Rapidamente</h3>
+                                    <input type="text" placeholder="Nome">
+                                    <input type="email" placeholder="E-mail">
+                                    <input type="password" placeholder="Senha">
+                                    <button class="primary-button">Cadastrar</button>
+                                    <p>Ou cadastre-se com:</p>
+                                    <button class="secondary-button">Google</button>
+                                    <button class="secondary-button">Celular</button>
+                                </div>
+                            </div>
+                            <a href="cadastro.html" class="button secondary-button small-button">Cadastre-se como Prestador</a>
+                        </div>
+                        <a href="#" class="button secondary-button small-button">Entrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html" class="active">Página Inicial</a></li>
+                    <li><a href="pintores.html">Pintores</a></li>
+                    <li><a href="pedreiros.html">Pedreiros</a></li>
+                    <li><a href="eletricistas.html">Eletricistas</a></li>
+                    <li><a href="encanadores.html">Encanadores</a></li>
+                    <li><a href="servicos_categorias.html">Outros Serviços</a></li>
+                    <li><a href="sobre_nos.html">Sobre Nós</a></li>
+                    <li><a href="index.html#whatsapp">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="main-carousel-section container">
+            <h2>Encontre o Profissional Ideal para Seu Projeto</h2>
+            <div class="carousel-container">
+                <div class="carousel-track-container">
+                    <div class="carousel-slide">
+                        <img src="imagens/banner1.png" alt="Eletricista Matheus">
+                        <div class="slide-caption">
+                            <h3>Eletricistas Qualificados</h3>
+                            <p>Instalações e reparos elétricos com segurança.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="imagens/banner2.png" alt="Eletricista Mulher">
+                        <div class="slide-caption">
+                            <h3>Diversidade e Expertise</h3>
+                            <p>Encontre a profissional certa para cada tipo de serviço.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="imagens/banner3.png" alt="Encanador">
+                        <div class="slide-caption">
+                            <h3>Encanadores Experientes</h3>
+                            <p>Soluções rápidas para qualquer problema hidráulico.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="imagens/pedreiro_menu.jpg" alt="Pedreiro">
+                        <div class="slide-caption">
+                            <h3>Pedreiros para sua Obra</h3>
+                            <p>Construção e reforma com profissionais de confiança.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="imagens/encanador_menu.jpg" alt="Serviços Gerais">
+                        <div class="slide-caption">
+                            <h3>Serviços Diversos</h3>
+                            <p>De pequenos reparos a grandes projetos, temos o que você precisa.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button prev" aria-label="Slide Anterior">&#10094;</button>
+                <button class="carousel-button next" aria-label="Próximo Slide">&#10095;</button>
+            </div>
+            <div class="carousel-dots">
+                <span class="carousel-dot active" data-slide-index="0"></span>
+                <span class="carousel-dot" data-slide-index="1"></span>
+                <span class="carousel-dot" data-slide-index="2"></span>
+                <span class="carousel-dot" data-slide-index="3"></span>
+                <span class="carousel-dot" data-slide-index="4"></span>
+            </div>
+        </section>
+        <section class="hero-section container">
+            <h1>Sua Plataforma de Conexão com o Serviço Perfeito</h1>
+            <p>Conectando você aos melhores talentos da sua região para qualquer tipo de serviço, de forma rápida e segura.</p>
+            <a href="#featured-services" class="button primary-button">Comece Agora!</a>
+        </section>
+
+        <section id="featured-services" class="container">
+            <h2>Serviços em Destaque</h2>
+            <div class="section-services">
+                <div class="service-card">
+                    <i class="fas fa-paint-roller"></i>
+                    <h3>Pintores</h3>
+                    <p>Transforme seus ambientes com pinturas de qualidade profissional.</p>
+                    <a href="pintores.html" class="button primary-button">Ver Pintores</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-hard-hat"></i>
+                    <h3>Pedreiros</h3>
+                    <p>Construção e reforma com expertise e segurança.</p>
+                    <a href="pedreiros.html" class="button primary-button">Ver Pedreiros</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Eletricistas</h3>
+                    <p>Instalações e reparos elétricos com total segurança e certificação.</p>
+                    <a href="eletricistas.html" class="button primary-button">Ver Eletricistas</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-faucet"></i>
+                    <h3>Encanadores</h3>
+                    <p>Soluções rápidas e eficazes para problemas hidráulicos.</p>
+                    <a href="encanadores.html" class="button primary-button">Ver Encanadores</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-toolbox"></i>
+                    <h3>Pequenos Reparos</h3>
+                    <p>Consertos e manutenções do dia a dia, de forma ágil.</p>
+                    <a href="servicos_categorias.html" class="button primary-button">Ver Reparos</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-couch"></i>
+                    <h3>Montador de Móveis</h3>
+                    <p>Montagem e desmontagem de móveis com precisão e cuidado.</p>
+                    <a href="servicos_categorias.html" class="button primary-button">Ver Montadores</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose-us container">
+            <h2>Por Que Escolher a Serviços 4.0?</h2>
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Segurança</h3>
+                    <p>Profissionais verificados e plataforma com total segurança para seus dados.</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="fas fa-star"></i>
+                    <h3>Qualidade</h3>
+                    <p>Avaliações reais de clientes garantem a escolha do melhor profissional.</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Agilidade</h3>
+                    <p>Encontre e agende serviços rapidamente, sem burocracia.</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Melhores Preços</h3>
+                    <p>Compare orçamentos e encontre a melhor opção para o seu bolso.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Serviços 4.0</p>
+            <div class="footer-links">
+                <a href="feedback.html">Deixe sua Avaliação</a> |
+                <a href="sobre_nos.html">Sobre Nós</a> |
+                <a href="termos_de_uso.html">Termos de Uso</a>
+            </div>
+            <div>Dúvidas ou gostaria de ser um apoiador?</div>
+            <div style="text-align: center; padding: 20px;" id="whatsapp">
+                <a href="https://wa.me/16994555864" target="_blank" class="whatsapp-button">
+                    <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> Fale Conosco no WhatsApp
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Script para o botão de cadastro rápido no cabeçalho
+            const botaoCadastroRapido = document.getElementById('botao-cadastro-rapido');
+            const formularioCadastro = document.getElementById('formulario-cadastro');
+
+            if (botaoCadastroRapido && formularioCadastro) {
+                botaoCadastroRapido.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    formularioCadastro.style.display = formularioCadastro.style.display === 'none' ? 'flex' : 'none';
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!formularioCadastro.contains(event.target) && event.target !== botaoCadastroRapido) {
+                        formularioCadastro.style.display = 'none';
+                    }
+                });
+            }
+
+            // Script para ativar o link do menu de navegação
+            const currentPath = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+
+            navLinks.forEach(link => {
+                // Remove a classe 'active' de todos os links, exceto o da página inicial, se estiverem na raiz ou em links internos
+                if (link.getAttribute('href') !== 'index.html' && link.getAttribute('href').indexOf('#') === -1) {
+                    link.classList.remove('active');
+                }
+
+                // Adiciona 'active' se o href do link corresponder ao caminho atual da página
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                }
+                 // Caso especial para a página inicial (index.html)
+                if (currentPath === '' || currentPath === 'index.html') {
+                    if (link.getAttribute('href') === 'index.html') {
+                        link.classList.add('active');
+                    }
+                }
+            });
+
+            // ----------- SCRIPT DO CARROSSEL -----------
+            const carouselTrack = document.querySelector('.carousel-track-container');
+            const carouselSlides = document.querySelectorAll('.carousel-slide');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            let currentSlide = 0;
+            // A largura do slide deve ser a largura visível do container do carrossel
+            // Para garantir que funciona bem em responsividade, recalcule a largura do primeiro slide.
+            let slideWidth = carouselSlides[0].clientWidth;
+
+            // Função para atualizar a posição do slide e o dot ativo
+            function updateCarousel() {
+                // Multiplica a largura do slide pelo índice do slide atual para mover o track
+                carouselTrack.style.transform = `translateX(${-currentSlide * slideWidth}px)`;
+
+                // Atualiza a classe 'active' para o dot correspondente
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            // Event listener para o botão 'Próximo'
+            nextButton.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % carouselSlides.length; // Volta para o início se chegar ao fim
+                updateCarousel();
+            });
+
+            // Event listener para o botão 'Anterior'
+            prevButton.addEventListener('click', () => {
+                // Garante que o índice não seja negativo ao voltar
+                currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length;
+                updateCarousel();
+            });
+
+            // Event listeners para os dots de paginação
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index; // Define o slide atual para o índice do dot clicado
+                    updateCarousel();
+                });
+            });
+
+            // Inicializa a posição do carrossel ao carregar a página
+            updateCarousel();
+
+            // Opcional: Auto-play do carrossel
+            let autoPlayInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % carouselSlides.length;
+                updateCarousel();
+            }, 5000); // Muda de slide a cada 5 segundos (5000 milissegundos)
+
+            // Pausa o auto-play quando o mouse está sobre o carrossel
+            carouselTrack.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+
+            // Retoma o auto-play quando o mouse sai do carrossel
+            carouselTrack.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(() => {
+                    currentSlide = (currentSlide + 1) % carouselSlides.length;
+                    updateCarousel();
+                }, 5000);
+            });
+
+            // Ajusta a largura do slide na mudança de tamanho da janela
+            // Isso é CRUCIAL para que o carrossel funcione corretamente em responsividade
+            window.addEventListener('resize', () => {
+                slideWidth = carouselSlides[0].clientWidth; // Recalcula a largura do slide
+                updateCarousel(); // Atualiza a posição para ajustar à nova largura
+            });
+            // ----------- FIM DO SCRIPT DO CARROSSEL -----------
+        });
+    </script>
+</body>
+</html>

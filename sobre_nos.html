@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços 4.0 - Sobre Nós</title>
+    <link rel="stylesheet" href="style_laranja_preto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos específicos para a página Sobre Nós */
+        .about-section {
+            background-color: #333; /* Fundo mais escuro para o conteúdo */
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #f8f9fa;
+        }
+
+        .about-section h2 {
+            color: #ffa500;
+            text-align: center;
+            margin-bottom: 1.5em;
+            font-size: 2.2em;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+            gap: 2em; /* Espaçamento entre os blocos de conteúdo */
+            justify-content: center; /* Centraliza os blocos */
+            align-items: flex-start; /* Alinha os itens pelo topo */
+        }
+
+        .about-text, .about-image {
+            flex: 1; /* Permite que os blocos cresçam e diminuam */
+            min-width: 300px; /* Largura mínima para evitar colapso em telas pequenas */
+            max-width: 500px; /* Largura máxima para cada bloco */
+            padding: 1em;
+        }
+
+        .about-text p {
+            margin-bottom: 1em;
+            line-height: 1.8; /* Melhor legibilidade */
+            color: #ccc;
+        }
+
+        .about-text strong {
+            color: #ffa500; /* Destaca palavras-chave */
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        .mission-vision-values {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 1.5em;
+            margin-top: 3em;
+            padding: 1em;
+            background-color: #444; /* Fundo para a seção de missão/visão/valores */
+            border-radius: 8px;
+        }
+
+        .mvv-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            text-align: center;
+            padding: 1em;
+            border: 1px solid #555; /* Borda sutil */
+            border-radius: 5px;
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .mvv-item:hover {
+            transform: translateY(-3px);
+            background-color: #585858; /* Leve escurecimento no hover */
+        }
+
+        .mvv-item i {
+            font-size: 2.5em;
+            color: #ffa500;
+            margin-bottom: 0.5em;
+        }
+
+        .mvv-item h4 {
+            color: #ffa500;
+            margin-bottom: 0.5em;
+            font-size: 1.4em;
+        }
+
+        .mvv-item p {
+            color: #ccc;
+            font-size: 0.9em;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .about-content, .mission-vision-values {
+                flex-direction: column;
+                align-items: center;
+            }
+            .about-text, .about-image, .mvv-item {
+                max-width: 90%; /* Ocupa mais largura em telas menores */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <a href="index.html" class="site-logo">
+                    <img src="imagens/logo4.0.png" alt="Logo Serviços 4.0">
+                    <span></span>
+                </a>
+                <div class="header-action-group">
+                    <p>Precisa agendar um profissional?</p>
+                    <div class="header-buttons">
+                        <div class="botoes-lado-a-lado">
+                            <div class="cadastro-rapido">
+                                <button id="botao-cadastro-rapido" class="button primary-button small-button">Cadastre-se (Cliente)</button>
+                                <div id="formulario-cadastro">
+                                    <h3>Cadastre-se Rapidamente</h3>
+                                    <input type="text" placeholder="Nome">
+                                    <input type="email" placeholder="E-mail">
+                                    <input type="password" placeholder="Senha">
+                                    <button class="primary-button">Cadastrar</button>
+                                    <p>Ou cadastre-se com:</p>
+                                    <button class="secondary-button">Google</button>
+                                    <button class="secondary-button">Celular</button>
+                                </div>
+                            </div>
+                            <a href="cadastro.html" class="button secondary-button small-button">Cadastre-se como Prestador</a>
+                        </div>
+                        <a href="#" class="button secondary-button small-button">Entrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="pintores.html">Pintores</a></li>
+                    <li><a href="pedreiros.html">Pedreiros</a></li>
+                    <li><a href="eletricistas.html">Eletricistas</a></li>
+                    <li><a href="encanadores.html">Encanadores</a></li>
+                    <li><a href="servicos_categorias.html">Outros Serviços</a></li>
+                    <li><a href="sobre_nos.html" class="active">Sobre Nós</a></li>
+                    <li><a href="index.html#whatsapp">Contato</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container content-section">
+            <div class="about-section">
+                <h2>Conheça a Serviços 4.0</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Na <strong>Serviços 4.0</strong>, nossa paixão é conectar pessoas que precisam de soluções com profissionais que as oferecem com excelência. Acreditamos que a tecnologia pode simplificar o dia a dia e trazer mais eficiência para a contratação de serviços.</p>
+                        <p>Desde a nossa fundação em 2024, trabalhamos incansavelmente para construir uma plataforma intuitiva, segura e confiável, onde clientes encontram desde pequenos reparos até grandes projetos, e profissionais expandem suas oportunidades de trabalho.</p>
+                        <p>Nosso compromisso é com a <strong>qualidade</strong>, a <strong>transparência</strong> e a <strong>inovação</strong>. Estamos sempre buscando novas maneiras de aprimorar a experiência de todos os usuários, garantindo que cada conexão seja um sucesso.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/500x350?text=Servicos+4.0+Team" alt="Imagem da equipe Serviços 4.0">
+                    </div>
+                </div>
+
+                <div class="mission-vision-values">
+                    <div class="mvv-item">
+                        <i class="fas fa-bullseye"></i>
+                        <h4>Nossa Missão</h4>
+                        <p>Conectar pessoas a profissionais de serviços de forma rápida, segura e eficiente, promovendo a satisfação mútua e o desenvolvimento do mercado de trabalho.</p>
+                    </div>
+                    <div class="mvv-item">
+                        <i class="fas fa-eye"></i>
+                        <h4>Nossa Visão</h4>
+                        <p>Ser a plataforma líder em agendamento de serviços no Brasil, reconhecida pela inovação, qualidade e confiabilidade em todas as conexões.</p>
+                    </div>
+                    <div class="mvv-item">
+                        <i class="fas fa-heart"></i>
+                        <h4>Nossos Valores</h4>
+                        <p>Qualidade, Transparência, Inovação, Confiança, Respeito e Compromisso com o Cliente e o Profissional.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Serviços 4.0</p>
+            <div class="footer-links">
+                <a href="feedback.html">Deixe sua Avaliação</a> |
+                <a href="sobre_nos.html">Sobre Nós</a> |
+                <a href="termos_de_uso.html">Termos de Uso</a>
+            </div>
+            <div>Dúvidas ou gostaria de ser um apoiador?</div>
+            <div style="text-align: center; padding: 20px;" id="whatsapp">
+                <a href="https://wa.me/16994555864" target="_blank" class="whatsapp-button">
+                    <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> Fale Conosco no WhatsApp
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Script para o botão de cadastro rápido no cabeçalho
+            const botaoCadastroRapido = document.getElementById('botao-cadastro-rapido');
+            const formularioCadastro = document.getElementById('formulario-cadastro');
+
+            if (botaoCadastroRapido && formularioCadastro) {
+                botaoCadastroRapido.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    formularioCadastro.style.display = formularioCadastro.style.display === 'none' ? 'flex' : 'none';
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!formularioCadastro.contains(event.target) && event.target !== botaoCadastroRapido) {
+                        formularioCadastro.style.display = 'none';
+                    }
+                });
+            }
+
+            // Script para ativar o link do menu de navegação
+            const currentPath = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.main-nav ul li a');
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
