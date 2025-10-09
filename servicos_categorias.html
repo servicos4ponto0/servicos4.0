@@ -1,71 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TXSJH3E56G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TXSJH3E56G');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serviços 4.0 - Outras Categorias de Serviços</title>
-    <link rel="stylesheet" href="style_laranja_preto.css">
+    <link rel="stylesheet" href="style.css/style_laranja_preto.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Estilos específicos para a página de categorias de serviços */
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min-width um pouco menor para mais flexibilidade */
-            gap: 2em; /* Espaçamento entre os cards de categoria */
-            padding: 2em 0;
-            justify-content: center;
-        }
-        .category-card {
-            background-color: #444; /* Cor de fundo escura */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            text-align: center;
-            padding: 1.5em;
-            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-            color: #f8f9fa; /* Cor do texto claro para contraste */
-            display: flex; /* Para centralizar o conteúdo verticalmente */
-            flex-direction: column;
-            justify-content: space-between; /* Espaço entre o título e o botão */
-            align-items: center; /* Centraliza horizontalmente */
-            min-height: 200px; /* Altura mínima para os cards */
-        }
-        .category-card:hover {
-            transform: translateY(-5px);
-            background-color: #555; /* Leve escurecimento no hover */
-        }
-        .category-card i {
-            font-size: 3.5em; /* Ícone maior */
-            color: #ffa500; /* Cor laranja para os ícones */
-            margin-bottom: 0.8em;
-        }
-        .category-card h4 {
-            color: #ffa500; /* Cor laranja para o nome da categoria */
-            margin-bottom: 1em;
-            font-size: 1.6em;
-        }
-        .category-card p {
-            color: #ccc; /* Cor cinza claro para a descrição */
-            font-size: 0.9em;
-            margin-bottom: 1.5em;
-            flex-grow: 1; /* Permite que a descrição ocupe o espaço disponível */
-        }
-        .category-card .button {
-            width: calc(100% - 2em); /* Ocupa quase toda a largura do card, com padding */
-            padding: 10px 15px;
-            font-size: 1em;
-            margin-top: auto; /* Empurra o botão para a parte inferior */
-        }
-
-        /* Título da seção principal */
-        .content-section h3 {
-            text-align: center;
-            color: #ffa500;
-            margin-top: 2em;
-            margin-bottom: 1.5em;
-            font-size: 2.2em;
-        }
-    </style>
+    
 </head>
 <body>
     <header>
@@ -218,5 +168,20 @@
             // Por enquanto, são apenas links vazios (#).
         });
     </script>
+
+    <!-- VLibras widget - coloque antes do fechamento </body> -->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    // Inicializa o widget apontando para o app oficial
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  
 </body>
 </html>

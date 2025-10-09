@@ -1,0 +1,499 @@
+/* style_laranja_preto.css */
+
+/* Reset básico e tipografia */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333; /* Fundo preto sutil */
+    color: #f8f9fa; /* Texto branco/cinza claro */
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #222; /* Container um pouco mais escuro */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada para destaque */
+}
+
+/* Cabeçalho principal do site */
+header {
+    background-color: #222; /* Fundo do header mais escuro para contrastar com o main-nav */
+    color: lightcyan; /* Cor do texto no titulo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Removido padding-bottom e margin-bottom daqui, será tratado dentro dos elementos */
+}
+
+/* Topo do cabeçalho (logo, botões de login/cadastro) */
+.header-top {
+    display: flex;
+    justify-content: space-between; /* Alinha logo à esquerda e grupo de ações à direita */
+    align-items: center;
+    padding: 2px 20px; /* Reduzido o padding vertical para diminuir a altura */
+    background-color: #222;
+    border-bottom: 1px solid #444;
+    min-height: 60px; /* Diminuído o min-height para reduzir a altura do cabeçalho */
+    position: relative; /* Para o formulário de cadastro rápido */
+}
+
+/* Container interno do header-top para alinhamento */
+.header-top .container {
+    display: flex;
+    justify-content: space-between; /* Distribui logo e grupo de ações */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Garante que o conteúdo não se espalhe demais */
+    margin: 0 auto;
+    padding: 0; /* Remove padding extra do container, já que o header-top tem */
+    background-color: transparent; /* Torna o container transparente para ver o fundo do header-top */
+    box-shadow: none; /* Remove a sombra do container para não duplicar */
+    border-radius: 0; /* Remove border-radius */
+}
+
+.site-logo {
+    display: flex; /* Permite alinhar a imagem dentro do link */
+    align-items: center;
+    margin-right: 20px; /* Espaço entre a logo e o grupo de ação */
+    flex-shrink: 0; /* Impede que a logo encolha */
+}
+
+.site-logo img {
+    height: 150px; /* Altura fixa para a logo, alinhada com min-height do header-top */
+    width: auto; /* Mantém a proporção */
+    display: block;
+    margin: 0;
+}
+
+.site-logo span {
+    display: none; /* Oculta o texto 'Serviços 4.0' se a imagem já tiver */
+}
+
+/* Grupo de ações (frase e botões de cadastro/entrar) */
+.header-action-group {
+    display: flex;
+    flex-direction: row; /* Frase e botões lado a lado */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 15px; /* Espaçamento entre a frase e o grupo de botões */
+    margin-left: auto; /* Empurra todo o grupo para a direita */
+}
+
+.header-action-group p {
+    color: #fff;
+    margin: 0;
+    font-size: 0.9em;
+    white-space: nowrap; /* Impede a quebra de linha da frase */
+}
+
+.header-buttons {
+    display: flex;
+    flex-direction: row; /* Botões dentro deste grupo lado a lado */
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os botões */
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+}
+
+.botoes-lado-a-lado {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Formulário de cadastro rápido (pop-up) */
+.cadastro-rapido {
+    position: relative;
+}
+
+#formulario-cadastro {
+    position: absolute;
+    top: 40px; /* Posição abaixo do botão de cadastro */
+    right: 0; /* Alinha à direita */
+    background-color: #2b2b2b; /* Fundo mais escuro para melhor contraste */
+    border: 1px solid #777; /* Borda um pouco mais clara */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    z-index: 1000;
+    width: 300px; /* Largura fixa */
+    display: none; /* Escondido por padrão */
+    flex-direction: column;
+    gap: 10px; /* Espaçamento entre os campos */
+}
+
+#formulario-cadastro h3 {
+    color: #ffcc00; /* Laranja mais claro para o título */
+    margin-top: 0;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#formulario-cadastro input {
+    width: calc(100% - 20px); /* Ajuste para o padding */
+    padding: 8px;
+    border: 1px solid #888; /* Borda do input mais visível */
+    border-radius: 4px;
+    background-color: #3a3a3a; /* Fundo do input mais escuro */
+    color: #f0f0f0; /* Cor do texto no input mais clara (Gestalt: Contraste) */
+    font-size: 0.9em;
+}
+
+#formulario-cadastro p {
+    color: #e0e0e0; /* Cor do texto de parágrafo mais clara */
+    font-size: 0.85em;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Título principal da página quando não há header-top (ex: Cadastro) */
+.header-title {
+    background-color: #222; /* Mesma cor do header para consistência */
+    padding: 2em 20px; /* Padding para dar espaço ao título */
+    text-align: center;
+    color: #fff;
+}
+
+.header-title h1 {
+    color: #ffa500; /* Laranja para o título principal */
+    margin: 0;
+    font-size: 2.8em; /* Tamanho maior para destaque */
+    line-height: 1.2;
+}
+
+.header-title p {
+    color: #ccc;
+    margin-top: 0.5em;
+    font-size: 1.1em;
+}
+
+/* Botões gerais */
+.button {
+    padding: 8px 16px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap; /* Impede a quebra de linha nos botões */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+}
+
+.primary-button {
+    background-color: #ffa500; /* Laranja */
+    color: #222; /* Texto escuro */
+}
+
+.primary-button:hover {
+    background-color: #ffb833; /* Laranja mais claro no hover */
+}
+
+.secondary-button {
+    background-color: #444; /* Cinza escuro */
+    color: #fff; /* Texto branco */
+    border: 1px solid #666;
+}
+
+.secondary-button:hover {
+    background-color: #555; /* Cinza um pouco mais claro no hover */
+    border-color: #888;
+}
+
+.small-button {
+    font-size: 0.85em;
+    padding: 6px 12px;
+}
+
+.large-button {
+    font-size: 1.2em;
+    padding: 12px 24px;
+}
+
+/* Menu de navegação principal */
+.main-nav {
+    background-color: #444; /* Fundo do menu um pouco mais claro que o header-top */
+    padding: 0.8em 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil para separar do conteúdo */
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os itens do menu */
+    gap: 20px; /* Espaçamento entre os itens (Gestalt: Proximidade) */
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+}
+
+.main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+    white-space: nowrap;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: #ffa500; /* Laranja no hover/ativo */
+    background-color: #555; /* Fundo cinza mais claro no hover/ativo */
+    border-radius: 5px; /* Borda arredondada no hover/ativo */
+}
+
+/* Carrossel */
+.carousel-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    height: 300px; /* Altura fixa para o carrossel */
+    background-color: #333;
+}
+
+.carousel {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 5px;
+    z-index: 5; /* Garante que os controles fiquem acima das imagens */
+}
+
+.carousel-control.prev { left: 10px; }
+.carousel-control.next { right: 10px; }
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Seções de conteúdo */
+.content-section {
+    padding: 2em 0;
+    text-align: center; /* Centraliza o texto e os cards dentro da seção */
+}
+
+.content-section h3 {
+    text-align: center;
+    color: #ffa500;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+    font-size: 2.2em;
+}
+
+/* Cards de serviço (Gestalt: Similaridade, Proximidade) */
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os cards */
+    gap: 20px; /* Espaçamento entre os cards (Proximidade) */
+    padding: 20px 0;
+}
+
+.service-cards .card {
+    flex: 1 1 calc(25% - 20px); /* 4 cards por linha em telas grandes */
+    max-width: 280px;
+    min-width: 200px;
+    background-color: #333; /* Fundo do card */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.service-cards .card:hover {
+    transform: translateY(-5px); /* Efeito de levitar no hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.service-cards .card i {
+    font-size: 3em;
+    color: #ffa500; /* Ícone laranja */
+    margin-bottom: 15px;
+}
+
+.service-cards .card h4 {
+    color: #fff; /* Título do card branco */
+    margin-bottom: 10px;
+}
+
+.service-cards .card p {
+    color: #ccc; /* Texto do card cinza claro */
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+/* Rodapé */
+footer {
+    background-color: #222; /* Mesma cor do cabeçalho para consistência (Gestalt: Similaridade) */
+    color: #fff;
+    text-align: center;
+    padding: 10px 0; /* Diminuído para reduzir a altura do rodapé */
+    margin-top: 50px; /* Espaçamento do conteúdo */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra para separar do conteúdo */
+}
+/* No seu style_laranja_preto.css */
+.footer-links {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.footer-links a {
+    color: #ffa500; /* Cor do link */
+    text-decoration: none;
+    margin: 0 5px; /* Espaçamento entre os links */
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #e69500; /* Cor ao passar o mouse */
+}
+
+.whatsapp-button {
+    display: inline-block;
+    background-color: #25D366; /* Verde WhatsApp */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.whatsapp-button:hover {
+    background-color: #1DA851; /* Verde mais escuro no hover */
+    transform: translateY(-2px);
+}
+
+/* Queries para Responsividade (ajustes gerais) */
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column; /* Coloca itens um abaixo do outro */
+        gap: 10px;
+        min-height: unset; /* Remove min-height fixo */
+        padding: 10px;
+    }
+
+    .site-logo img {
+        height: 50px; /* Logo um pouco menor em mobile */
+    }
+
+    .header-action-group {
+        flex-direction: column; /* Pilha a frase e os botões */
+        gap: 10px;
+        margin-left: 0;
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    .header-action-group p {
+        text-align: center;
+        font-size: 0.8em;
+    }
+
+    .header-buttons {
+        flex-direction: column; /* Botões um abaixo do outro */
+        width: 100%;
+        gap: 8px;
+    }
+
+    .botoes-lado-a-lado {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cadastro-rapido {
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    #formulario-cadastro {
+        width: calc(100% - 30px); /* Ajusta a largura para mobile com padding */
+        right: auto; /* Remove alinhamento à direita */
+        left: 50%; /* Centraliza o formulário */
+        transform: translateX(-50%); /* Ajusta para centralizar */
+        top: 50px; /* Posição abaixo do botão */
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Itens do menu um abaixo do outro */
+        gap: 10px;
+    }
+
+    .main-nav ul li {
+        width: 100%; /* Ocupa largura total */
+    }
+
+    .main-nav ul li a {
+        display: block; /* Ocupa todo o espaço do li */
+        padding: 10px; /* Padding maior para facilitar o toque */
+    }
+
+    .carousel-container {
+        height: 200px; /* Altura menor para o carrossel em mobile */
+    }
+
+    .carousel-control {
+        padding: 8px 12px;
+        font-size: 1.2em;
+    }
+
+    .content-section h3 {
+        font-size: 1.8em;
+    }
+
+    .service-cards .card {
+        flex: 1 1 calc(50% - 20px); /* 2 cards por linha em telas menores */
+        max-width: unset; /* Remove max-width para flexibilidade */
+    }
+
+    .container {
+        padding: 15px; /* Reduz o padding do container geral */
+        margin: 15px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-cards .card {
+        flex: 1 1 100%; /* 1 card por linha em telas muito pequenas */
+    }
+    .header-title h1 {
+        font-size: 2em;
+    }
+    .header-title p {
+        font-size: 0.9em;
+    }
+}

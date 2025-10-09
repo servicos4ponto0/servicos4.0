@@ -1,66 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TXSJH3E56G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TXSJH3E56G');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serviços 4.0 - Termos de Uso</title>
-    <link rel="stylesheet" href="style_laranja_preto.css">
+    <link rel="stylesheet" href="style.css/style_laranja_preto.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Estilos específicos para a página de Termos de Uso */
-        .terms-section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #333;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            color: #f8f9fa;
-        }
-
-        .terms-section h1 {
-            color: #ffa500;
-            text-align: center;
-            margin-bottom: 1.5em;
-            font-size: 2.5em;
-        }
-
-        .terms-section h2 {
-            color: #ffcc00; /* Um tom ligeiramente diferente para sub-títulos */
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
-            font-size: 1.8em;
-        }
-
-        .terms-section p {
-            line-height: 1.8;
-            margin-bottom: 1em;
-        }
-
-        .terms-section ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            margin-bottom: 1em;
-        }
-
-        .terms-section ul li {
-            margin-bottom: 0.5em;
-        }
-
-        @media (max-width: 768px) {
-            .terms-section {
-                max-width: 95%;
-                margin: 20px auto;
-                padding: 20px;
-            }
-            .terms-section h1 {
-                font-size: 2em;
-            }
-            .terms-section h2 {
-                font-size: 1.5em;
-            }
-        }
-    </style>
+   <link rel="stylesheet" href="style.css/termos_de_uso.css">
+   
 </head>
 <body>
     <header>
@@ -217,5 +173,20 @@
             });
         });
     </script>
+
+    <!-- VLibras widget - coloque antes do fechamento </body> -->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    // Inicializa o widget apontando para o app oficial
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  
 </body>
 </html>
