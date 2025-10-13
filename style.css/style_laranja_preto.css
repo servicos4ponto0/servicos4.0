@@ -87,18 +87,28 @@ header {
     white-space: nowrap; /* Impede a quebra de linha da frase */
 }
 
-.header-buttons {
+.header-buttons,
+.botoes-lado-a-lado {
     display: flex;
-    flex-direction: row; /* Botões dentro deste grupo lado a lado */
-    align-items: center;
-    gap: 10px; /* Espaçamento entre os botões */
-    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Corrige possíveis bordas indevidas em links dos botões */
+.header-buttons a,
+.botoes-lado-a-lado a {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
 }
 
 .botoes-lado-a-lado {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 /* Formulário de cadastro rápido (pop-up) */
@@ -178,6 +188,7 @@ header {
     text-align: center;
     white-space: nowrap; /* Impede a quebra de linha nos botões */
     transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+    display: inline-block;
 }
 
 .primary-button {
@@ -400,8 +411,9 @@ footer {
     transform: translateY(-2px);
 }
 
-/* Queries para Responsividade (ajustes gerais) */
+/* Responsividade/Ajustes gerais */
 @media (max-width: 768px) {
+
     .header-top {
         flex-direction: column; /* Coloca itens um abaixo do outro */
         gap: 10px;
@@ -425,14 +437,33 @@ footer {
         font-size: 0.8em;
     }
 
-    .header-buttons {
-        flex-direction: column; /* Botões um abaixo do outro */
-        width: 100%;
+    .header-buttons,
+    .botoes-lado-a-lado {
+        flex-direction: column;
         gap: 8px;
+        width: 100%;
+        align-items: stretch; /* Faz cada botão ocupar 100% */
+    }
+
+    .header-buttons a,
+    .header-buttons button,
+    .botoes-lado-a-lado a,
+    .botoes-lado-a-lado button {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border-width: 0;
+    }
+    .button {
+        display: block !important;
+        text-align: center !important;
+        width: 100%;
+        margin-bottom: 5px;
     }
 
     .botoes-lado-a-lado {
-        flex-direction: column;
         width: 100%;
     }
 
