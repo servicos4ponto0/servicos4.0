@@ -1,69 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TXSJH3E56G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-TXSJH3E56G');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TXSJH3E56G"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TXSJH3E56G');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serviços 4.0 - Termos de Uso</title>
+    
     <link rel="stylesheet" href="style.css/style_laranja_preto.css">
+    <link rel="stylesheet" href="style.css/termos_de_uso.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-   <link rel="stylesheet" href="style.css/termos_de_uso.css">
-   
+
+    <style>
+        /* --- REMOÇÃO DA BARRA DO GOOGLE --- */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
+        /* --- 1. HEADER & ESTRUTURA --- */
+        header {
+            background-color: #222;
+            border-bottom: 1px solid #444;
+            position: relative; z-index: 1000; 
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .header-container { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 10px 20px; max-width: 1200px; margin: 0 auto; min-height: 70px; 
+        }
+        
+        .header-left-group { display: flex; align-items: center; gap: 20px; flex-grow: 1; }
+         .site-logo img { 
+        height: 85px; /* Aumentei de 45px para 80px */
+        display: block; 
+        margin-right: 15px; 
+        transition: transform 0.3s; /* Efeito bonitinho ao passar o mouse */
+        }
+        .site-logo img:hover {
+        transform: scale(1.1); /* O logo cresce um pouquinho quando passa o mouse */
+        }
+        .header-right-group { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
+
+        /* Menu Desktop */
+        .nav-menu { display: flex; align-items: center; }
+        .nav-menu ul { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
+        .nav-menu a { color: #f8f9fa; text-decoration: none; font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.3s; }
+        .nav-menu a:hover { color: #ffa500; }
+        
+        /* Botão Login Desktop */
+        .desktop-login-btn { background-color: #ffa500; color: #222; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; white-space: nowrap; font-size: 14px; transition: background 0.3s; display: inline-block; }
+        .desktop-login-btn:hover { background-color: #e69500; }
+        .mobile-login-link { display: none; }
+
+        /* Tradutor */
+        #google_translate_element { position: static; margin-left: 5px; }
+        .goog-te-gadget-simple { background-color: transparent !important; border: 1px solid rgba(255,255,255,0.3) !important; padding: 5px !important; border-radius: 4px !important; font-size: 13px !important; }
+        .goog-te-gadget-simple span { color: #fff !important; vertical-align: middle; } 
+        .goog-te-gadget-simple img { display: none !important; }
+        .goog-te-menu-value span:last-child { display: none; }
+
+        /* Hambúrguer */
+        .hamburger { display: none; flex-direction: column; width: 30px; cursor: pointer; gap: 6px; z-index: 2000; }
+        .hamburger span { display: block; height: 3px; background: #ffa500; border-radius: 3px; transition: 0.3s; }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 1100px) {
+            .hamburger { display: flex; }
+            .desktop-login-btn { display: none; }
+            .nav-menu { display: none; }
+            .header-container { justify-content: space-between; }
+            
+            #google_translate_element { position: absolute; top: 18px; right: 60px; z-index: 1001; }
+
+            .nav-menu.mobile-active {
+                display: flex; position: absolute; top: 100%; left: 0; width: 100%; 
+                background: #333; flex-direction: column; align-items: center; 
+                border-bottom: 1px solid #444; padding-bottom: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            }
+            .nav-menu ul { flex-direction: column; width: 100%; text-align: center; padding: 20px 0; gap: 0; }
+            .nav-menu ul li { width: 100%; border-bottom: 1px solid #444; }
+            .nav-menu ul li a { display: block; padding: 15px; font-size: 18px; }
+            
+            .mobile-login-link { display: block; margin-top: 10px; width: 80%; margin-left: auto; margin-right: auto; }
+            .mobile-login-link a { color: #ffa500 !important; border: 1px solid #ffa500; padding: 10px; border-radius: 5px; display: block; text-align: center; width: 100%; box-sizing: border-box; }
+            
+            .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        }
+
+        /* --- TEMA (Modo Claro) --- */
+        .theme-toggle-btn { position: fixed; bottom: 100px; left: 20px; background-color: #ffa500; color: #222; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5em; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1001; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+        .theme-toggle-btn:hover { transform: scale(1.1); }
+
+        /* Light Mode Styles */
+        body.light-mode { background-color: #f0f0f0 !important; color: #333 !important; }
+        body.light-mode header { background-color: #fff !important; border-bottom: 1px solid #ddd !important; }
+        body.light-mode .nav-menu { background-color: transparent !important; }
+        body.light-mode .nav-menu.mobile-active { background-color: #fff !important; }
+        body.light-mode .nav-menu a { color: #444 !important; } 
+        body.light-mode .nav-menu a:hover { color: #ffa500 !important; }
+        body.light-mode .hamburger span { background-color: #333 !important; }
+        @media (max-width: 1100px) { body.light-mode .nav-menu ul li { border-bottom: 1px solid #eee !important; } }
+
+        body.light-mode .goog-te-gadget-simple { border: 1px solid #ccc !important; }
+        body.light-mode .goog-te-gadget-simple span { color: #333 !important; }
+
+        /* Conteúdo Termos no Modo Claro */
+        body.light-mode main { background-color: transparent !important; }
+        
+        /* A classe .terms-section vem do arquivo CSS original, vamos sobrescrever para o modo claro */
+        body.light-mode .terms-section {
+            background-color: #fff !important;
+            color: #333 !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+            border: 1px solid #eee !important;
+        }
+        body.light-mode .terms-section h1 { color: #d48800 !important; } /* Laranja escuro */
+        body.light-mode .terms-section h2 { color: #222 !important; }
+        body.light-mode .terms-section p, 
+        body.light-mode .terms-section li { color: #555 !important; }
+        
+        body.light-mode footer { background-color: #e0e0e0 !important; color: #333 !important; }
+        body.light-mode footer a { color: #444 !important; }
+    </style>
 </head>
 <body>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({
+            pageLanguage: 'pt',
+            includedLanguages: 'pt,en,es',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <header>
-        <div class="header-top">
-            <div class="container">
+        <div class="header-container">
+            <div class="header-left-group">
                 <a href="index.html" class="site-logo">
                     <img src="imagens/logo4.0.png" alt="Logo Serviços 4.0">
-                    <span></span>
                 </a>
-                <div class="header-action-group">
-                    <p>Precisa agendar um profissional?</p>
-                    <div class="header-buttons">
-                        <div class="botoes-lado-a-lado">
-                            <div class="cadastro-rapido">
-                                <button id="botao-cadastro-rapido" class="button primary-button small-button">Cadastre-se (Cliente)</button>
-                                <div id="formulario-cadastro">
-                                    <h3>Cadastre-se Rapidamente</h3>
-                                    <input type="text" placeholder="Nome">
-                                    <input type="email" placeholder="E-mail">
-                                    <input type="password" placeholder="Senha">
-                                    <button class="primary-button">Cadastrar</button>
-                                    <p>Ou cadastre-se com:</p>
-                                    <button class="secondary-button">Google</button>
-                                    <button class="secondary-button">Celular</button>
-                                </div>
-                            </div>
-                            <a href="cadastro.html" class="button secondary-button small-button">Cadastre-se como Prestador</a>
-                        </div>
-                        <a href="#" class="button secondary-button small-button">Entrar</a>
-                    </div>
+                <nav class="nav-menu" id="nav-menu">
+                    <ul>
+                        <li><a href="index.html">Página Inicial</a></li>
+                        <li><a href="pintores.html">Pintores</a></li>
+                        <li><a href="pedreiros.html">Pedreiros</a></li>
+                        <li><a href="eletricistas.html">Eletricistas</a></li>
+                        <li><a href="encanadores.html">Encanadores</a></li>
+                        <li><a href="servicos_categorias.html">Outros Serviços</a></li>
+                        <li><a href="sobre_nos.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li class="mobile-login-link">
+                            <a href="login.html">ENTRAR / CADASTRE-SE</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-right-group">
+                <a href="login.html" class="desktop-login-btn">ENTRAR / CADASTRE-SE</a>
+                <div id="google_translate_element"></div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </div>
-        <nav class="main-nav">
-            <div class="container">
-                <ul>
-                    <li><a href="index.html">Página Inicial</a></li>
-                    <li><a href="pintores.html">Pintores</a></li>
-                    <li><a href="pedreiros.html">Pedreiros</a></li>
-                    <li><a href="eletricistas.html">Eletricistas</a></li>
-                    <li><a href="encanadores.html">Encanadores</a></li>
-                    <li><a href="servicos_categorias.html">Outros Serviços</a></li>
-                    <li><a href="sobre_nos.html">Sobre Nós</a></li>
-                    <li><a href="index.html#whatsapp">Contato</a></li>
-                </ul>
-            </div>
-        </nav>
     </header>
 
     <main>
@@ -118,15 +230,18 @@
         </div>
     </main>
 
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
+        <i class="fas fa-adjust"></i>
+    </button>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 Serviços 4.0</p>
             <div class="footer-links">
-                <a href="feedback.html">Deixe sua Avaliação</a> | 
+                <a href="feedback.html">Deixe sua Avaliação</a> |
                 <a href="sobre_nos.html">Sobre Nós</a> |
-                <a href="termos_de_uso.html">Termos de Uso</a> 
+                <a href="termos_de_uso.html">Termos de Uso</a>
             </div>
-            <div>Dúvidas ou gostaria de ser um apoiador?</div>
             <div style="text-align: center; padding: 20px;" id="whatsapp">
                 <a href="https://wa.me/16994555864" target="_blank" class="whatsapp-button">
                     <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> Fale Conosco no WhatsApp
@@ -137,56 +252,51 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Lógica do formulário de cadastro rápido no cabeçalho (do index.html)
-            const botaoCadastroRapido = document.getElementById('botao-cadastro-rapido');
-            const formularioCadastroRapido = document.getElementById('formulario-cadastro');
-
-            if (botaoCadastroRapido && formularioCadastroRapido) {
-                botaoCadastroRapido.addEventListener('click', function(event) {
-                    event.stopPropagation();
-                    formularioCadastroRapido.style.display = formularioCadastroRapido.style.display === 'none' ? 'flex' : 'none';
-                });
-
-                document.addEventListener('click', function(event) {
-                    if (!formularioCadastroRapido.contains(event.target) && event.target !== botaoCadastroRapido) {
-                        formularioCadastroRapido.style.display = 'none';
-                    }
+            // 1. Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('mobile-active');
                 });
             }
-
-            // Lógica para ativar o link do menu de navegação (do index.html)
-            const currentPath = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.main-nav ul li a');
-
+            // 2. Link Ativo
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-menu ul li a');
             navLinks.forEach(link => {
-                link.classList.remove('active'); // Remove a classe active de todos os links
-
-                const linkHref = link.getAttribute('href');
-                const linkFileName = linkHref.split('/').pop();
-
-                if (linkFileName === currentPath) {
-                    link.classList.add('active');
-                }
-                if ((currentPath === '' || currentPath === 'index.html') && (linkFileName === 'index.html' || (linkHref.includes('#') && window.location.hash === linkHref.split('#')[1]))) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === currentPath) link.classList.add('active');
             });
+            // 3. Tema
+            const themeBtn = document.getElementById('theme-toggle');
+            const body = document.body;
+            const icon = themeBtn.querySelector('i');
+
+            function updateThemeIcon() {
+                if (body.classList.contains('light-mode')) {
+                    icon.classList.remove('fa-adjust'); icon.classList.add('fa-moon');
+                } else {
+                    icon.classList.remove('fa-moon'); icon.classList.add('fa-adjust');
+                }
+            }
+
+            if (localStorage.getItem('theme') === 'light') {
+                body.classList.add('light-mode');
+                updateThemeIcon();
+            }
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', () => {
+                    body.classList.toggle('light-mode');
+                    updateThemeIcon();
+                    localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+                });
+            }
         });
     </script>
 
-    <!-- VLibras widget - coloque antes do fechamento </body> -->
-<div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
-  
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    // Inicializa o widget apontando para o app oficial
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
-  
+    <div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 </body>
 </html>

@@ -1,133 +1,330 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TXSJH3E56G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-TXSJH3E56G');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TXSJH3E56G"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TXSJH3E56G');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços 4.0 - Cadastro de Prestador de Serviços</title>
+    <title>Serviços 4.0 - Cadastro de Prestador</title>
+    
     <link rel="stylesheet" href="style.css/style_laranja_preto.css">
     <link rel="stylesheet" href="style.css/cadastro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>
+
+    <style>
+        /* --- REMOÇÃO DA BARRA DO GOOGLE --- */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+
+        /* --- 1. HEADER & ESTRUTURA --- */
+        header {
+            background-color: #222;
+            border-bottom: 1px solid #444;
+            position: relative; z-index: 1000; 
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .header-container { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 10px 20px; max-width: 1200px; margin: 0 auto; min-height: 90px; /* Aumentei min-height para caber o logo */
+        }
+        
+        .header-left-group { display: flex; align-items: center; gap: 20px; flex-grow: 1; }
+        
+        /* LOGO AUMENTADO */
+        .site-logo img { 
+            height: 80px; /* Aumentado para 80px */
+            display: block; margin-right: 15px; 
+            transition: transform 0.3s;
+        }
+        .site-logo img:hover { transform: scale(1.05); }
+
+        .header-right-group { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
+
+        /* Menu Desktop */
+        .nav-menu { display: flex; align-items: center; }
+        .nav-menu ul { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
+        .nav-menu a { color: #f8f9fa; text-decoration: none; font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.3s; }
+        .nav-menu a:hover { color: #ffa500; }
+        
+        /* Botão Login Desktop */
+        .desktop-login-btn { background-color: #ffa500; color: #222; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; white-space: nowrap; font-size: 14px; transition: background 0.3s; display: inline-block; }
+        .desktop-login-btn:hover { background-color: #e69500; }
+        .mobile-login-link { display: none; }
+
+        /* Tradutor */
+        #google_translate_element { position: static; margin-left: 5px; }
+        .goog-te-gadget-simple { background-color: transparent !important; border: 1px solid rgba(255,255,255,0.3) !important; padding: 5px !important; border-radius: 4px !important; font-size: 13px !important; }
+        .goog-te-gadget-simple span { color: #fff !important; vertical-align: middle; } 
+        .goog-te-gadget-simple img { display: none !important; }
+        .goog-te-menu-value span:last-child { display: none; }
+
+        /* Hambúrguer */
+        .hamburger { display: none; flex-direction: column; width: 30px; cursor: pointer; gap: 6px; z-index: 2000; }
+        .hamburger span { display: block; height: 3px; background: #ffa500; border-radius: 3px; transition: 0.3s; }
+
+        /* --- 2. ESTILOS DE FORMULÁRIO --- */
+        .cadastro-section {
+            background-color: #333; padding: 20px; border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); max-width: 800px; margin: 20px auto;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .cadastro-section h2 { color: #ffa500; text-align: center; margin-bottom: 1em; }
+        
+        .form-group { margin-bottom: 1.5em; }
+        .form-group label { display: block; margin-bottom: 0.5em; font-weight: bold; color: #eee; }
+        
+        /* Inputs */
+        .form-group input, .form-group select, .form-group textarea {
+            width: calc(100% - 20px); padding: 10px; border: 1px solid #666; border-radius: 4px;
+            background-color: #555; color: #f8f9fa; 
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+        
+        /* Checkbox Termos */
+        .checkbox-group {
+            display: flex; align-items: center; gap: 10px; margin-top: 20px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: auto; margin: 0; cursor: pointer;
+        }
+        .checkbox-group label {
+            margin: 0; font-weight: normal; font-size: 0.9em; cursor: pointer;
+        }
+
+        /* Wrapper de Senha */
+        .password-input-wrapper { position: relative; width: 100%; }
+        .password-input-wrapper input { width: 100% !important; padding-right: 40px !important; box-sizing: border-box; }
+        .toggle-password { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #ccc; z-index: 10; }
+        .toggle-password:hover { color: #ffa500; }
+
+        .validation-error { display: none; color: #dc3545; font-size: 0.9em; margin-top: 5px; }
+        .form-group.error input { border-color: #dc3545 !important; }
+
+        .cadastro-section button.primary-button { width: 100%; padding: 12px; font-size: 1.1em; margin-top: 20px; background-color: #ffa500; color: #222; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .cadastro-section button.primary-button:hover { background-color: #e69500; }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 1100px) {
+            .hamburger { display: flex; }
+            .desktop-login-btn { display: none; }
+            .nav-menu { display: none; }
+            .header-container { justify-content: space-between; }
+            
+            #google_translate_element { position: absolute; top: 25px; right: 60px; z-index: 1001; } /* Ajuste top devido ao logo maior */
+
+            .nav-menu.mobile-active {
+                display: flex; position: absolute; top: 100%; left: 0; width: 100%; 
+                background: #333; flex-direction: column; align-items: center; 
+                border-bottom: 1px solid #444; padding-bottom: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            }
+            .nav-menu ul { flex-direction: column; width: 100%; text-align: center; padding: 20px 0; gap: 0; }
+            .nav-menu ul li { width: 100%; border-bottom: 1px solid #444; }
+            .nav-menu ul li a { display: block; padding: 15px; font-size: 18px; }
+            
+            .mobile-login-link { display: block; margin-top: 10px; width: 80%; margin-left: auto; margin-right: auto; }
+            .mobile-login-link a { color: #ffa500 !important; border: 1px solid #ffa500; padding: 10px; border-radius: 5px; display: block; text-align: center; width: 100%; box-sizing: border-box; }
+            
+            .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        }
+
+        /* --- TEMA (Modo Claro) --- */
+        .theme-toggle-btn { position: fixed; bottom: 100px; left: 20px; background-color: #ffa500; color: #222; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5em; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1001; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+        .theme-toggle-btn:hover { transform: scale(1.1); }
+
+        body.light-mode { background-color: #f0f0f0 !important; color: #333 !important; }
+        body.light-mode header { background-color: #fff !important; border-bottom: 1px solid #ddd !important; }
+        body.light-mode .nav-menu { background-color: transparent !important; }
+        body.light-mode .nav-menu.mobile-active { background-color: #fff !important; }
+        body.light-mode .nav-menu a { color: #444 !important; } 
+        body.light-mode .nav-menu a:hover { color: #ffa500 !important; }
+        body.light-mode .hamburger span { background-color: #333 !important; }
+        @media (max-width: 1100px) { body.light-mode .nav-menu ul li { border-bottom: 1px solid #eee !important; } }
+
+        body.light-mode .goog-te-gadget-simple { border: 1px solid #ccc !important; }
+        body.light-mode .goog-te-gadget-simple span { color: #333 !important; }
+
+        body.light-mode main { background-color: transparent !important; }
+        body.light-mode .cadastro-section {
+            background-color: #fff !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+            border: 1px solid #eee;
+        }
+        body.light-mode .cadastro-section h2 { color: #d48800 !important; }
+        body.light-mode label { color: #444 !important; }
+        
+        body.light-mode input, body.light-mode select, body.light-mode textarea {
+            background-color: #fff !important;
+            color: #333 !important;
+            border: 1px solid #ccc !important;
+        }
+        body.light-mode .toggle-password { color: #666 !important; }
+        body.light-mode .toggle-password:hover { color: #ffa500 !important; }
+
+        body.light-mode footer { background-color: #e0e0e0 !important; color: #333 !important; }
+        body.light-mode footer a { color: #444 !important; }
+    </style>
+</head>
 <body>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({
+            pageLanguage: 'pt',
+            includedLanguages: 'pt,en,es',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <header>
-        <div class="header-top">
-            <div class="container">
+        <div class="header-container">
+            <div class="header-left-group">
                 <a href="index.html" class="site-logo">
                     <img src="imagens/logo4.0.png" alt="Logo Serviços 4.0">
-                    <span></span>
                 </a>
-                <div class="header-action-group">
-                    <p>Precisa agendar um profissional?</p>
-                    <div class="header-buttons">
-                        <div class="botoes-lado-a-lado">
-                            <div class="cadastro-rapido">
-                                <button id="botao-cadastro-rapido" class="button primary-button small-button">Cadastre-se (Cliente)</button>
-                                <div id="formulario-cadastro">
-                                    <h3>Cadastre-se Rapidamente</h3>
-                                    <input type="text" placeholder="Nome">
-                                    <input type="email" placeholder="E-mail">
-                                    <input type="password" placeholder="Senha">
-                                    <button class="primary-button">Cadastrar</button>
-                                    <p>Ou cadastre-se com:</p>
-                                    <button class="secondary-button">Google</button>
-                                    <button class="secondary-button">Celular</button>
-                                </div>
-                            </div>
-                            <a href="cadastro.html" class="button secondary-button small-button">Cadastre-se como Prestador</a>
-                        </div>
-                        <a href="#" class="button secondary-button small-button">Entrar</a>
-                    </div>
+                <nav class="nav-menu" id="nav-menu">
+                    <ul>
+                        <li><a href="index.html">Página Inicial</a></li>
+                        <li><a href="pintores.html">Pintores</a></li>
+                        <li><a href="pedreiros.html">Pedreiros</a></li>
+                        <li><a href="eletricistas.html">Eletricistas</a></li>
+                        <li><a href="encanadores.html">Encanadores</a></li>
+                        <li><a href="servicos_categorias.html">Outros Serviços</a></li>
+                        <li><a href="sobre_nos.html">Sobre Nós</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li class="mobile-login-link">
+                            <a href="login.html">ENTRAR / CADASTRE-SE</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-right-group">
+                <a href="login.html" class="desktop-login-btn">ENTRAR / CADASTRE-SE</a>
+                <div id="google_translate_element"></div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </div>
-        <nav class="main-nav">
-            <div class="container">
-                <ul>
-                    <li><a href="index.html">Página Inicial</a></li>
-                    <li><a href="pintores.html">Pintores</a></li>
-                    <li><a href="pedreiros.html">Pedreiros</a></li>
-                    <li><a href="eletricistas.html">Eletricistas</a></li>
-                    <li><a href="encanadores.html">Encanadores</a></li>
-                    <li><a href="servicos_categorias.html">Outros Serviços</a></li>
-                    <li><a href="sobre_nos.html">Sobre Nós</a></li>
-                    <li><a href="index.html#whatsapp">Contato</a></li>
-                </ul>
-            </div>
-        </nav>
     </header>
 
-    <div class="container">
-        <section class="cadastro-section">
-            <h2>Cadastro de Prestador de Serviços</h2>
-           
-            <form id="cadastro-form">
-                <div class="form-group">
-                    <label for="nome">Nome Completo:</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="telefone">Telefone (com DDD):</label>
-                    <input type="tel" id="telefone" name="telefone" pattern="[0-9]{2}[0-9]{4,5}[0-9]{4}" placeholder="Ex: 11987654321" required>
-                </div>
-                <div class="form-group">
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirma-senha">Confirme a Senha:</label>
-                    <input type="password" id="confirma-senha" name="confirma-senha" required>
-                </div>
-                <div class="form-group">
-                    <label for="endereco">Endereço Completo:</label>
-                    <input type="text" id="endereco" name="endereco" required>
-                </div>
-                <div class="form-group">
-                    <label for="servico">Serviço Principal:</label>
-                    <select id="servico" name="servico" required>
-                        <option value="">Selecione um serviço</option>
-                        <option value="eletricista">Eletricista</option>
-                        <option value="encanador">Encanador</option>
-                        <option value="pedreiro">Pedreiro</option>
-                        <option value="pintor">Pintor</option>
-                        <option value="outros">Outros</option>
-                    </select>
-                </div>
-                <div class="form-group" id="outros-servico" style="display: none;">
-                    <label for="outros">Especifique o serviço (Outros):</label>
-                    <input type="text" id="outros" name="outros">
-                </div>
-                <div class="form-group">
-                    <label for="experiencia">Experiência (anos):</label>
-                    <input type="number" id="experiencia" name="experiencia" min="0" required>
-                </div>
-                <div class="form-group">
-                    <label for="bio">Mini-biografia (para o seu perfil):</label>
-                    <textarea id="bio" name="bio" rows="4" placeholder="Descreva sua experiência, especialidades, etc." required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="foto-perfil">Foto de Perfil:</label>
-                    <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*">
-                    <p style="font-size: 0.8em; color: #aaa;">Max. 2MB, JPG ou PNG.</p>
-                </div>
-                <button type="submit" class="button primary-button">Cadastrar</button>
-            </form>
-        </section>
-    </div>
+    <main>
+        <div class="container">
+            <section class="cadastro-section">
+                <h2>Cadastro de Prestador de Serviços</h2>
+                <form id="cadastro-form">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Ex: Maria Souza">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required placeholder="Ex: maria@email.com">
+                        <span class="validation-error" id="email-error">Insira um e-mail válido.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone (com DDD):</label>
+                        <input type="text" id="telefone" name="telefone" placeholder="Ex: 11999999999 (Apenas números)" required maxlength="11">
+                        <span class="validation-error" id="telefone-error">Telefone inválido.</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="senha" name="senha" required placeholder="Crie uma senha forte">
+                            <i class="fas fa-eye toggle-password" data-target="senha"></i>
+                        </div>
+                        <span class="validation-error" id="senha-error">Senha obrigatória.</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirma-senha">Confirme a Senha:</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="confirma-senha" name="confirma-senha" required placeholder="Repita a senha">
+                            <i class="fas fa-eye toggle-password" data-target="confirma-senha"></i>
+                        </div>
+                        <span class="validation-error" id="confirma-senha-error">As senhas não conferem.</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cep">CEP (Apenas números):</label>
+                        <input type="text" id="cep" name="cep" maxlength="8" placeholder="Ex: 14870000" required>
+                        <span class="validation-error" id="cep-error">CEP inválido.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Rua/Avenida:</label>
+                        <input type="text" id="endereco" name="endereco" required placeholder="Preenchido automaticamente pelo CEP">
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Número:</label>
+                        <input type="text" id="numero" name="numero" required placeholder="Ex: 123">
+                    </div>
+                    <div class="form-group">
+                        <label for="bairro">Bairro:</label>
+                        <input type="text" id="bairro" name="bairro" required placeholder="Bairro">
+                    </div>
+                    <div class="form-group">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" required placeholder="Cidade">
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado (UF):</label>
+                        <input type="text" id="estado" name="estado" maxlength="2" required placeholder="SP">
+                    </div>
+                    <div class="form-group">
+                        <label for="servico">Serviço Principal:</label>
+                        <select id="servico" name="servico" required>
+                            <option value="">Selecione um serviço</option>
+                            <option value="eletricista">Eletricista</option>
+                            <option value="encanador">Encanador</option>
+                            <option value="pedreiro">Pedreiro</option>
+                            <option value="pintor">Pintor</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="outros-servico" style="display: none;">
+                        <label for="outros">Especifique o serviço:</label>
+                        <input type="text" id="outros" name="outros" placeholder="Digite o nome do serviço">
+                    </div>
+                    <div class="form-group">
+                        <label for="experiencia">Experiência (anos):</label>
+                        <input type="text" id="experiencia" name="experiencia" required placeholder="Ex: 5 (Apenas números)">
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Mini-biografia:</label>
+                        <textarea id="bio" name="bio" rows="4" required placeholder="Conte um pouco sobre sua experiência e especialidades..."></textarea>
+                    </div>
 
-   <footer>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="termos" name="termos" required>
+                        <label for="termos">
+                            Li e concordo com os <a href="termos_de_uso.html" target="_blank" style="color: #ffa500; text-decoration: underline;">Termos de Uso</a> e Política de Privacidade.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="button primary-button">Cadastrar</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
+        <i class="fas fa-adjust"></i>
+    </button>
+
+    <footer>
         <div class="container">
             <p>&copy; 2025 Serviços 4.0</p>
             <div class="footer-links">
@@ -135,7 +332,6 @@
                 <a href="sobre_nos.html">Sobre Nós</a> |
                 <a href="termos_de_uso.html">Termos de Uso</a>
             </div>
-            <div>Dúvidas ou gostaria de ser um apoiador?</div>
             <div style="text-align: center; padding: 20px;" id="whatsapp">
                 <a href="https://wa.me/16994555864" target="_blank" class="whatsapp-button">
                     <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> Fale Conosco no WhatsApp
@@ -146,87 +342,135 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Lógica do formulário de cadastro principal (cadastro.html)
+            // 1. Menu e Tema (Padrão)
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('mobile-active');
+                });
+            }
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-menu ul li a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) link.classList.add('active');
+            });
+            const themeBtn = document.getElementById('theme-toggle');
+            const body = document.body;
+            const icon = themeBtn.querySelector('i');
+            function updateThemeIcon() {
+                if (body.classList.contains('light-mode')) {
+                    icon.classList.remove('fa-adjust'); icon.classList.add('fa-moon');
+                } else {
+                    icon.classList.remove('fa-moon'); icon.classList.add('fa-adjust');
+                }
+            }
+            if (localStorage.getItem('theme') === 'light') {
+                body.classList.add('light-mode');
+                updateThemeIcon();
+            }
+            if (themeBtn) {
+                themeBtn.addEventListener('click', () => {
+                    body.classList.toggle('light-mode');
+                    updateThemeIcon();
+                    localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+                });
+            }
+
+            // 4. Lógica Específica de Cadastro
             const servicoSelect = document.getElementById('servico');
             const outrosServicoDiv = document.getElementById('outros-servico');
             const outrosServicoInput = document.getElementById('outros');
             const cadastroForm = document.getElementById('cadastro-form');
+            const senhaInput = document.getElementById('senha');
+            const confirmaSenhaInput = document.getElementById('confirma-senha');
+            const cepInput = document.getElementById('cep');
+            const enderecoInput = document.getElementById('endereco');
+            const bairroInput = document.getElementById('bairro');
+            const cidadeInput = document.getElementById('cidade');
+            const estadoInput = document.getElementById('estado');
+            const telefoneInput = document.getElementById('telefone');
+            const numeroInput = document.getElementById('numero');
+            const experienciaInput = document.getElementById('experiencia');
+            const termosCheckbox = document.getElementById('termos');
 
-            if (servicoSelect) { // Garante que o select exista antes de adicionar o listener
+            function restrictToNumbers(inputElement) {
+                if (inputElement) {
+                    inputElement.addEventListener('input', function() {
+                        this.value = this.value.replace(/[^0-9]/g, '');
+                    });
+                }
+            }
+            restrictToNumbers(telefoneInput);
+            restrictToNumbers(cepInput);
+            restrictToNumbers(numeroInput);
+            restrictToNumbers(experienciaInput);
+
+            document.querySelectorAll('.toggle-password').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    const targetInput = document.getElementById(targetId);
+                    if (targetInput.type === 'password') {
+                        targetInput.type = 'text';
+                        this.classList.replace('fa-eye', 'fa-eye-slash');
+                    } else {
+                        targetInput.type = 'password';
+                        this.classList.replace('fa-eye-slash', 'fa-eye');
+                    }
+                });
+            });
+
+            if (servicoSelect) {
                 servicoSelect.addEventListener('change', function() {
                     if (this.value === 'outros') {
                         outrosServicoDiv.style.display = 'block';
-                        outrosServicoInput.setAttribute('required', '');
+                        outrosServicoInput.setAttribute('required', 'required');
                     } else {
                         outrosServicoDiv.style.display = 'none';
                         outrosServicoInput.removeAttribute('required');
-                        outrosServicoInput.value = ''; // Limpa o campo se "Outros" não estiver selecionado
                     }
                 });
             }
 
-            if (cadastroForm) { // Garante que o formulário exista antes de adicionar o listener
+            if (cepInput) {
+                cepInput.addEventListener('blur', function() {
+                    const cep = cepInput.value.replace(/\D/g, '');
+                    if (cep.length !== 8) return;
+                    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                        .then(res => res.json())
+                        .then(data => {
+                            if (!data.erro) {
+                                enderecoInput.value = data.logradouro;
+                                bairroInput.value = data.bairro;
+                                cidadeInput.value = data.localidade;
+                                estadoInput.value = data.uf;
+                            }
+                        });
+                });
+            }
+
+            if (cadastroForm) {
                 cadastroForm.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Impede o envio padrão do formulário
-                    alert('Cadastro realizado com sucesso! Em breve entraremos em contato.');
-                    // adicionar aqui a lógica para enviar os dados do formulário para um servidor
-                    this.reset(); // Limpa o formulário após o envio (simulado)
-                    outrosServicoDiv.style.display = 'none'; // Esconde novamente o campo "Outros"
-                    outrosServicoInput.removeAttribute('required');
-                });
-            }
-
-            // Lógica do formulário de cadastro rápido no cabeçalho (do index.html)
-            const botaoCadastroRapido = document.getElementById('botao-cadastro-rapido');
-            const formularioCadastroRapido = document.getElementById('formulario-cadastro'); // Renomeado para evitar conflito
-
-            if (botaoCadastroRapido && formularioCadastroRapido) {
-                botaoCadastroRapido.addEventListener('click', function(event) {
-                    event.stopPropagation();
-                    formularioCadastroRapido.style.display = formularioCadastroRapido.style.display === 'none' ? 'flex' : 'none';
-                });
-
-                document.addEventListener('click', function(event) {
-                    if (!formularioCadastroRapido.contains(event.target) && event.target !== botaoCadastroRapido) {
-                        formularioCadastroRapido.style.display = 'none';
+                    event.preventDefault();
+                    if (!termosCheckbox.checked) {
+                        alert('Você precisa aceitar os Termos de Uso para continuar.');
+                        return;
                     }
+                    if (senhaInput.value !== confirmaSenhaInput.value) {
+                        alert('As senhas não conferem!');
+                        return;
+                    }
+                    alert('Cadastro realizado com sucesso! Em breve entraremos em contato.');
+                    this.reset();
+                    outrosServicoDiv.style.display = 'none';
                 });
             }
-
-            // Lógica para ativar o link do menu de navegação (do index.html)
-            const currentPath = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.main-nav ul li a');
-
-            navLinks.forEach(link => {
-                link.classList.remove('active'); // Remove a classe active de todos os links
-
-                const linkHref = link.getAttribute('href');
-                const linkFileName = linkHref.split('/').pop(); // Extrai o nome do arquivo do href
-
-                // Compara o nome do arquivo da URL atual com o nome do arquivo do link
-                if (linkFileName === currentPath) {
-                    link.classList.add('active');
-                }
-                // Caso especial para a página inicial (index.html) e links de contato com âncora
-                if ((currentPath === '' || currentPath === 'index.html') && (linkFileName === 'index.html' || (linkHref.includes('#') && window.location.hash === linkHref.split('#')[1]))) {
-                    link.classList.add('active');
-                }
-            });
         });
     </script>
-    <!-- VLibras widget - coloque antes do fechamento </body> -->
-<div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
-  
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    // Inicializa o widget apontando para o app oficial
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
-  
+
+    <div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 </body>
 </html>

@@ -1,81 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TXSJH3E56G"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-TXSJH3E56G');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços 4.0 - Encanadores</title>
+    <title>Serviços 4.0 - Cadastro de Cliente</title>
     
     <link rel="stylesheet" href="style.css/style_laranja_preto.css">
-    <link rel="stylesheet" href="style.css/encanadores.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* --- REMOÇÃO DA BARRA DO GOOGLE --- */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
 
-        /* --- 1. HEADER & ESTRUTURA --- */
-        header {
-            background-color: #222;
-            border-bottom: 1px solid #444;
-            position: relative; z-index: 1000; 
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        .header-container { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 10px 20px; max-width: 1200px; margin: 0 auto; min-height: 70px; 
-        }
-        
+        header { background-color: #222; border-bottom: 1px solid #444; position: relative; z-index: 1000; transition: background-color 0.3s, border-color 0.3s; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; max-width: 1200px; margin: 0 auto; min-height: 90px; }
         .header-left-group { display: flex; align-items: center; gap: 20px; flex-grow: 1; }
-         .site-logo img { 
-        height: 85px; /* Aumentei de 45px para 80px */
-        display: block; 
-        margin-right: 15px; 
-        transition: transform 0.3s; /* Efeito bonitinho ao passar o mouse */
-        }
-        .site-logo img:hover {
-        transform: scale(1.1); /* O logo cresce um pouquinho quando passa o mouse */
-        }
+        
+        .site-logo img { height: 80px; display: block; margin-right: 15px; transition: transform 0.3s; }
+        .site-logo img:hover { transform: scale(1.05); }
+
         .header-right-group { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
 
-        /* Menu Desktop */
         .nav-menu { display: flex; align-items: center; }
         .nav-menu ul { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
         .nav-menu a { color: #f8f9fa; text-decoration: none; font-weight: 500; font-size: 15px; white-space: nowrap; transition: color 0.3s; }
         .nav-menu a:hover { color: #ffa500; }
         
-        /* Botão Login Desktop */
         .desktop-login-btn { background-color: #ffa500; color: #222; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; white-space: nowrap; font-size: 14px; transition: background 0.3s; display: inline-block; }
         .desktop-login-btn:hover { background-color: #e69500; }
         .mobile-login-link { display: none; }
 
-        /* Tradutor */
         #google_translate_element { position: static; margin-left: 5px; }
         .goog-te-gadget-simple { background-color: transparent !important; border: 1px solid rgba(255,255,255,0.3) !important; padding: 5px !important; border-radius: 4px !important; font-size: 13px !important; }
         .goog-te-gadget-simple span { color: #fff !important; vertical-align: middle; } 
         .goog-te-gadget-simple img { display: none !important; }
         .goog-te-menu-value span:last-child { display: none; }
 
-        /* Hambúrguer */
         .hamburger { display: none; flex-direction: column; width: 30px; cursor: pointer; gap: 6px; z-index: 2000; }
         .hamburger span { display: block; height: 3px; background: #ffa500; border-radius: 3px; transition: 0.3s; }
 
-        /* --- RESPONSIVIDADE --- */
+        .register-container {
+            max-width: 500px; margin: 60px auto; padding: 30px;
+            background-color: #333; border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); text-align: center;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .register-container h1 { color: #ffa500; margin-bottom: 0.5em; }
+        .register-container p { color: #ccc; margin-bottom: 2em; }
+        .register-container .form-group { margin-bottom: 1.5em; text-align: left; }
+        .register-container label { display: block; color: #eee; margin-bottom: 0.5em; font-weight: bold; }
+        
+        .register-container input[type="text"],
+        .register-container input[type="email"],
+        .register-container input[type="password"] {
+            width: 100%; padding: 10px; border: 1px solid #555; border-radius: 4px;
+            background-color: #444; color: #fff; box-sizing: border-box;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
+        .checkbox-group input[type="checkbox"] { width: auto; margin: 0; cursor: pointer; }
+        .checkbox-group label { margin: 0; font-weight: normal; font-size: 0.9em; cursor: pointer; }
+
+        .password-input-wrapper { position: relative; }
+        .password-input-wrapper input { padding-right: 40px; }
+        .toggle-password { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #ccc; font-size: 1.1em; z-index: 10; transition: color 0.3s; }
+        .toggle-password:hover { color: #ffa500; }
+        
+        .password-error { display: none; color: #dc3545; font-size: 0.9em; margin-top: 5px; }
+
+        .register-container button.primary-button { width: 100%; padding: 12px; font-size: 1.1em; margin-top: 20px; background-color: #ffa500; color: #222; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .register-container button.primary-button:hover { background-color: #e69500; }
+        .register-container .login-link { display: block; margin-top: 20px; color: #ffa500; text-decoration: none; }
+
         @media (max-width: 1100px) {
             .hamburger { display: flex; }
             .desktop-login-btn { display: none; }
             .nav-menu { display: none; }
             .header-container { justify-content: space-between; }
             
-            #google_translate_element { position: absolute; top: 18px; right: 60px; z-index: 1001; }
+            #google_translate_element { position: absolute; top: 25px; right: 60px; z-index: 1001; }
 
             .nav-menu.mobile-active {
                 display: flex; position: absolute; top: 100%; left: 0; width: 100%; 
@@ -95,11 +99,9 @@
             .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
         }
 
-        /* --- TEMA (Modo Claro) --- */
         .theme-toggle-btn { position: fixed; bottom: 100px; left: 20px; background-color: #ffa500; color: #222; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5em; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1001; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
         .theme-toggle-btn:hover { transform: scale(1.1); }
 
-        /* Light Mode Styles */
         body.light-mode { background-color: #f0f0f0 !important; color: #333 !important; }
         body.light-mode header { background-color: #fff !important; border-bottom: 1px solid #ddd !important; }
         body.light-mode .nav-menu { background-color: transparent !important; }
@@ -112,18 +114,24 @@
         body.light-mode .goog-te-gadget-simple { border: 1px solid #ccc !important; }
         body.light-mode .goog-te-gadget-simple span { color: #333 !important; }
 
-        /* Cards de Profissionais no Modo Claro */
         body.light-mode main { background-color: transparent !important; }
-        body.light-mode .professional-card {
+        body.light-mode .register-container {
             background-color: #fff !important;
-            color: #333 !important;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
             border: 1px solid #eee !important;
         }
-        body.light-mode .professional-card h4 { color: #222 !important; }
-        body.light-mode .professional-card p { color: #555 !important; }
+        body.light-mode .register-container h1 { color: #d48800 !important; }
+        body.light-mode .register-container p { color: #555 !important; }
+        body.light-mode label { color: #444 !important; }
         
-        /* Rodapé */
+        body.light-mode input[type="text"],
+        body.light-mode input[type="email"], 
+        body.light-mode input[type="password"] {
+            background-color: #fff !important; color: #333 !important; border: 1px solid #ccc !important;
+        }
+        body.light-mode .toggle-password { color: #666 !important; }
+        body.light-mode .toggle-password:hover { color: #ffa500 !important; }
+
         body.light-mode footer { background-color: #e0e0e0 !important; color: #333 !important; }
         body.light-mode footer a { color: #444 !important; }
     </style>
@@ -176,40 +184,47 @@
     </header>
 
     <main>
-        <section class="container content-section">
-            <h3>Encanadores Disponíveis</h3>
-            <div class="professionals-grid">
-                <div class="professional-card" data-id="301" data-nome="Ricardo Santos">
-                    <img src="imagens/encanador_2.jpg" alt="Foto de Ricardo Santos">
-                    <h4>Ricardo Santos</h4>
-                    <p>Especialista em reparos hidráulicos, desentupimentos e instalação de tubulações.</p>
-                    <div class="rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (5.0)
+        <div class="register-container">
+            <h1>Cadastro de Cliente</h1>
+            <p>Rápido e fácil! Encontre o serviço ideal em segundos.</p>
+            <form id="client-register-form">
+                <div class="form-group">
+                    <label for="client-name">Nome:</label>
+                    <input type="text" id="client-name" required placeholder="Ex: João da Silva">
+                </div>
+                <div class="form-group">
+                    <label for="client-email">E-mail:</label>
+                    <input type="email" id="client-email" required placeholder="Ex: joao.silva@dominio.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="client-password">Senha:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="client-password" required placeholder="Sua senha">
+                        <i class="fas fa-eye toggle-password" data-target="client-password"></i>
                     </div>
-                    <a href="detalhes_agendamento.html?profissional=Ricardo Santos&servico=Encanador" class="button primary-button agendar-button">Agendar</a>
+                </div>
+                
+                <div class="form-group">
+                    <label for="client-confirm-password">Confirme a Senha:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="client-confirm-password" required placeholder="Confirme sua senha">
+                        <i class="fas fa-eye toggle-password" data-target="client-confirm-password"></i>
+                    </div>
+                    <span class="password-error" id="confirm-error">As senhas não coincidem.</span>
                 </div>
 
-                <div class="professional-card" data-id="302" data-nome="Sofia Pereira">
-                    <img src="imagens/encanadora_bia.jpg" alt="Foto de Sofia Pereira">
-                    <h4>Sofia Pereira</h4>
-                    <p>Vazamentos, instalação de torneiras e chuveiros. Soluções rápidas e eficientes.</p>
-                    <div class="rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i> (3.5)
-                    </div>
-                    <a href="detalhes_agendamento.html?profissional=Sofia Pereira&servico=Encanador" class="button primary-button agendar-button">Agendar</a>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="termos" name="termos" required>
+                    <label for="termos">
+                        Li e concordo com os <a href="termos_de_uso.html" target="_blank" style="color: #ffa500; text-decoration: underline;">Termos de Uso</a> e Política de Privacidade.
+                    </label>
                 </div>
-
-                <div class="professional-card" data-id="303" data-nome="Marcelo Vieira">
-                    <img src="imagens/encandor_1.jpg" alt="Foto de Marcelo Vieira">
-                    <h4>Marcelo Vieira</h4>
-                    <p>Manutenção preventiva, detecção de vazamentos e projetos hidráulicos.</p>
-                    <div class="rating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> (4.0)
-                    </div>
-                    <a href="detalhes_agendamento.html?profissional=Marcelo Vieira&servico=Encanador" class="button primary-button agendar-button">Agendar</a>
-                </div>
-            </div>
-        </section>
+                
+                <button type="submit" class="button primary-button">Cadastrar</button>
+            </form>
+            <a href="login_cliente.html" class="login-link">Já tem conta? Faça login aqui.</a>
+        </div>
     </main>
 
     <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
@@ -275,16 +290,53 @@
                 });
             }
 
-            // 4. Agendamento
-            const agendarButtons = document.querySelectorAll('.agendar-button');
-            agendarButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault(); 
-                    const professionalCard = this.closest('.professional-card');
-                    const professionalName = professionalCard.querySelector('h4').innerText;
-                    const url = `detalhes_agendamento.html?profissional=${encodeURIComponent(professionalName)}&servico=Encanador`;
-                    window.location.href = url;
+            // 4. Visualização de Senha e Validação
+            const registerForm = document.getElementById('client-register-form');
+            const passwordInput = document.getElementById('client-password');
+            const confirmPasswordInput = document.getElementById('client-confirm-password');
+            const errorElement = document.getElementById('confirm-error');
+            const termosCheckbox = document.getElementById('termos');
+
+            document.querySelectorAll('.toggle-password').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    const targetInput = document.getElementById(targetId);
+                    if (targetInput.type === 'password') {
+                        targetInput.type = 'text';
+                        this.classList.replace('fa-eye', 'fa-eye-slash');
+                    } else {
+                        targetInput.type = 'password';
+                        this.classList.replace('fa-eye-slash', 'fa-eye');
+                    }
                 });
+            });
+
+            registerForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                if (!termosCheckbox.checked) {
+                    alert('Por favor, aceite os Termos de Uso para continuar.');
+                    return;
+                }
+
+                if (passwordInput.value !== confirmPasswordInput.value) {
+                    errorElement.style.display = 'block';
+                    alert('Erro: As senhas não coincidem!');
+                    confirmPasswordInput.focus();
+                    return;
+                } else {
+                    errorElement.style.display = 'none';
+                }
+                alert('Cadastro de Cliente realizado com sucesso! Redirecionando para Login...');
+                window.location.href = 'login_cliente.html';
+            });
+            
+            confirmPasswordInput.addEventListener('input', function() {
+                if (passwordInput.value !== confirmPasswordInput.value && confirmPasswordInput.value.length > 0) {
+                    errorElement.style.display = 'block';
+                } else {
+                    errorElement.style.display = 'none';
+                }
             });
         });
     </script>

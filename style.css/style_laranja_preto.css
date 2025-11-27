@@ -87,28 +87,18 @@ header {
     white-space: nowrap; /* Impede a quebra de linha da frase */
 }
 
-.header-buttons,
-.botoes-lado-a-lado {
+.header-buttons {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-/* Corrige possíveis bordas indevidas em links dos botões */
-.header-buttons a,
-.botoes-lado-a-lado a {
-    border: none !important;
-    background: none !important;
-    box-shadow: none !important;
+    flex-direction: row; /* Botões dentro deste grupo lado a lado */
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os botões */
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
 }
 
 .botoes-lado-a-lado {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    width: 100%;
 }
 
 /* Formulário de cadastro rápido (pop-up) */
@@ -188,7 +178,6 @@ header {
     text-align: center;
     white-space: nowrap; /* Impede a quebra de linha nos botões */
     transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
-    display: inline-block;
 }
 
 .primary-button {
@@ -411,9 +400,8 @@ footer {
     transform: translateY(-2px);
 }
 
-/* Responsividade/Ajustes gerais */
+/* Queries para Responsividade (ajustes gerais) */
 @media (max-width: 768px) {
-
     .header-top {
         flex-direction: column; /* Coloca itens um abaixo do outro */
         gap: 10px;
@@ -437,33 +425,14 @@ footer {
         font-size: 0.8em;
     }
 
-    .header-buttons,
+    .header-buttons {
+        flex-direction: column; /* Botões um abaixo do outro */
+        width: 100%;
+        gap: 8px;
+    }
+
     .botoes-lado-a-lado {
         flex-direction: column;
-        gap: 8px;
-        width: 100%;
-        align-items: stretch; /* Faz cada botão ocupar 100% */
-    }
-
-    .header-buttons a,
-    .header-buttons button,
-    .botoes-lado-a-lado a,
-    .botoes-lado-a-lado button {
-        width: 100%;
-        box-sizing: border-box;
-        margin: 0;
-        padding-left: 0;
-        padding-right: 0;
-        border-width: 0;
-    }
-    .button {
-        display: block !important;
-        text-align: center !important;
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    .botoes-lado-a-lado {
         width: 100%;
     }
 
@@ -528,3 +497,210 @@ footer {
         font-size: 0.9em;
     }
 }
+
+/* ============================================== */
+/* DARK / LIGHT MODE OVERRIDES (Acessibilidade)   */
+/* ============================================== */
+
+/* Define cores padrão para o tema Light (Branco/Cinza/Preto) */
+:root[data-theme="light"] {
+    /* Cores de Fundo */
+    --color-bg-main: #f8f8f8;       /* Fundo Principal */
+    --color-bg-container: #ffffff;  /* Fundo de Containers/Cards */
+    --color-bg-header: #eeeeee;     /* Fundo do Cabeçalho */
+    --color-bg-nav: #dddddd;        /* Fundo da Navegação */
+    /* Cores de Texto e Destaque */
+    --color-text-primary: #222222;  /* Texto Escuro */
+    --color-text-secondary: #555555; /* Texto Secundário */
+    --color-orange: #ff6600;        /* Laranja para Destaque */
+    --color-orange-hover: #e65c00;
+}
+
+/* 1. Body e Containers */
+:root[data-theme="light"] body {
+    background-color: var(--color-bg-main); /* Fundo branco/cinza claro */
+    color: var(--color-text-primary);       /* Texto escuro */
+}
+
+:root[data-theme="light"] .container {
+    background-color: var(--color-bg-container); /* Container branco */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Header e Navegação */
+:root[data-theme="light"] header,
+:root[data-theme="light"] .header-top {
+    background-color: var(--color-bg-header); /* Fundo do Header claro */
+    border-bottom: 1px solid #ccc;
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="light"] .main-nav {
+    background-color: var(--color-bg-nav); /* Fundo da Navegação um pouco mais escuro que o Header */
+}
+
+:root[data-theme="light"] .main-nav ul li a {
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="light"] .main-nav ul li a:hover,
+:root[data-theme="light"] .main-nav ul li a.active {
+    color: var(--color-bg-main);
+    background-color: var(--color-orange);
+}
+
+/* 3. Botões e Ações */
+:root[data-theme="light"] .header-action-group p {
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="light"] .primary-button {
+    background-color: var(--color-orange);
+    color: var(--color-bg-main);
+    border: 2px solid var(--color-orange);
+}
+:root[data-theme="light"] .primary-button:hover {
+    background-color: var(--color-orange-hover);
+}
+
+:root[data-theme="light"] .secondary-button {
+    background-color: transparent;
+    color: var(--color-orange);
+    border: 2px solid var(--color-orange);
+}
+:root[data-theme="light"] .secondary-button:hover {
+    background-color: var(--color-orange);
+    color: var(--color-bg-main);
+}
+
+/* 4. Footer */
+:root[data-theme="light"] footer {
+    background-color: var(--color-bg-header);
+    color: var(--color-text-primary);
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+:root[data-theme="light"] .whatsapp-button {
+    color: var(--color-bg-main);
+}
+
+/* 5. Estilos de Formulário (usado em cadastro/login) */
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] select {
+    background-color: var(--color-bg-container) !important;
+    color: var(--color-text-primary) !important;
+    border: 1px solid #ccc !important;
+}
+
+/* 6. Cards de Conteúdo (seções principais) */
+:root[data-theme="light"] .hero-section,
+:root[data-theme="light"] .main-carousel-section,
+:root[data-theme="light"] .why-choose-us,
+:root[data-theme="light"] .choice-card,
+:root[data-theme="light"] .service-card,
+:root[data-theme="light"] .advantage-item {
+    background-color: var(--color-bg-container);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="light"] .hero-section h1,
+:root[data-theme="light"] .main-carousel-section h2,
+:root[data-theme="light"] .why-choose-us h2,
+:root[data-theme="light"] .service-card h3,
+:root[data-theme="light"] .slide-caption h3,
+:root[data-theme="light"] .advantage-item i,
+:root[data-theme="light"] .advantage-item h3 {
+    color: var(--color-orange);
+}
+:root[data-theme="light"] .main-carousel-section {
+    background-color: var(--color-bg-container);
+}
+:root[data-theme="light"] .slide-caption {
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Fundo claro para legenda */
+    color: var(--color-text-primary) !important;
+}
+
+/* Corrigindo links e textos que precisam de alto contraste no light mode */
+:root[data-theme="light"] .slide-caption p,
+:root[data-theme="light"] .hero-section p,
+:root[data-theme="light"] .advantage-item p {
+    color: var(--color-text-secondary);
+}
+
+/* Ajustes finos de hover */
+:root[data-theme="light"] .service-card:hover,
+:root[data-theme="light"] .advantage-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* ============================================== */
+/* ALTO CONTRASTE (Amarelo/Preto)                */
+/* ============================================== */
+
+:root[data-theme="high-contrast"] {
+    /* Cores de Fundo */
+    --color-bg-main: #000000;       
+    --color-bg-container: #111111; 
+    --color-bg-header: #000000;    
+    --color-bg-nav: #222222;       
+    /* Cores de Texto e Destaque */
+    --color-text-primary: #ffffff;  
+    --color-text-secondary: #eeeeee; 
+    --color-orange: #ffff00;        /* AMARELO PURO para Alto Contraste */
+    --color-orange-hover: #e6e600;
+}
+
+/* Aplicar as variáveis do light mode (que já foram definidas com as variáveis) */
+:root[data-theme="high-contrast"] body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-primary);
+}
+
+:root[data-theme="high-contrast"] .container,
+:root[data-theme="high-contrast"] .header-top,
+:root[data-theme="high-contrast"] .main-nav,
+:root[data-theme="high-contrast"] .main-nav ul li a:hover,
+:root[data-theme="high-contrast"] .main-nav ul li a.active,
+:root[data-theme="high-contrast"] .hero-section,
+:root[data-theme="high-contrast"] .main-carousel-section,
+:root[data-theme="high-contrast"] .why-choose-us,
+:root[data-theme="high-contrast"] .choice-card,
+:root[data-theme="high-contrast"] .service-card,
+:root[data-theme="high-contrast"] .advantage-item,
+:root[data-theme="high-contrast"] input,
+:root[data-theme="high-contrast"] textarea,
+:root[data-theme="high-contrast"] select {
+    background-color: var(--color-bg-container) !important;
+    color: var(--color-text-primary) !important;
+    /* Linhas e bordas em amarelo */
+    border-color: var(--color-orange) !important; 
+}
+
+:root[data-theme="high-contrast"] .primary-button,
+:root[data-theme="high-contrast"] .secondary-button,
+:root[data-theme="high-contrast"] .main-nav ul li a.active {
+    background-color: var(--color-orange) !important;
+    color: var(--color-bg-main) !important;
+    border: 2px solid var(--color-orange) !important;
+}
+
+:root[data-theme="high-contrast"] .hero-section h1,
+:root[data-theme="high-contrast"] .main-carousel-section h2,
+:root[data-theme="high-contrast"] .why-choose-us h2,
+:root[data-theme="high-contrast"] .service-card h3,
+:root[data-theme="high-contrast"] .slide-caption h3,
+:root[data-theme="high-contrast"] .advantage-item i,
+:root[data-theme="high-contrast"] .advantage-item h3 {
+    color: var(--color-orange) !important;
+}
+
+:root[data-theme="high-contrast"] footer {
+    background-color: var(--color-bg-header) !important;
+}
+
+/* Removendo fundos semi-transparentes */
+:root[data-theme="high-contrast"] .slide-caption {
+    background-color: var(--color-bg-container) !important; 
+}
+
